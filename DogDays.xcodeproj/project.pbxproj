@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B0F729B9272200C7D2AB /* DogDaysApp.swift */; };
+		0241B0FC29B9272400C7D2AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FB29B9272400C7D2AB /* Assets.xcassets */; };
+		0241B0FF29B9272400C7D2AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FE29B9272400C7D2AB /* Preview Assets.xcassets */; };
+		0241B10929B928D300C7D2AB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B10829B928D300C7D2AB /* Event.swift */; };
+		0241B10D29B92B8400C7D2AB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B10C29B92B8400C7D2AB /* HomeView.swift */; };
+		0241B11029B92C6500C7D2AB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B10F29B92C6500C7D2AB /* Color.swift */; };
+		0241B11229B93CF600C7D2AB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B11129B93CF600C7D2AB /* HomeViewModel.swift */; };
+		0241B11529BBE3C100C7D2AB /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B11429BBE3C100C7D2AB /* AddEventView.swift */; };
+		0241B11929BD2A2F00C7D2AB /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B11829BD2A2F00C7D2AB /* PreviewProvider.swift */; };
+		0241B11F29C0B8C800C7D2AB /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B11E29C0B8C700C7D2AB /* ContactModel.swift */; };
+		0241B12529C0BA0000C7D2AB /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12429C0BA0000C7D2AB /* ContactViewModel.swift */; };
+		0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12629C0BC0300C7D2AB /* ContactsView.swift */; };
+		0241B12929C0C27D00C7D2AB /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12829C0C27D00C7D2AB /* AddContactView.swift */; };
+		02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5FB7429C0FD2600A0BB1E /* String.swift */; };
+		02ED125229C4F95E00104D10 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ED125129C4F95E00104D10 /* EventDetailView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0241B0F429B9272200C7D2AB /* DogDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0241B0F729B9272200C7D2AB /* DogDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDaysApp.swift; sourceTree = "<group>"; };
+		0241B0FB29B9272400C7D2AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0241B0FE29B9272400C7D2AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0241B10829B928D300C7D2AB /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		0241B10C29B92B8400C7D2AB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0241B10F29B92C6500C7D2AB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0241B11129B93CF600C7D2AB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0241B11429BBE3C100C7D2AB /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
+		0241B11829BD2A2F00C7D2AB /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		0241B11E29C0B8C700C7D2AB /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		0241B12429C0BA0000C7D2AB /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		0241B12629C0BC0300C7D2AB /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		0241B12829C0C27D00C7D2AB /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
+		02C5FB7429C0FD2600A0BB1E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		02ED125129C4F95E00104D10 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0241B0F129B9272200C7D2AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0241B0EB29B9272200C7D2AB = {
+			isa = PBXGroup;
+			children = (
+				0241B0F629B9272200C7D2AB /* DogDays */,
+				0241B0F529B9272200C7D2AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0241B0F529B9272200C7D2AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0241B0F429B9272200C7D2AB /* DogDays.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0241B0F629B9272200C7D2AB /* DogDays */ = {
+			isa = PBXGroup;
+			children = (
+				0241B0F729B9272200C7D2AB /* DogDaysApp.swift */,
+				0241B10E29B92C4B00C7D2AB /* Extentions */,
+				0241B10729B928BA00C7D2AB /* Services */,
+				0241B10629B928A000C7D2AB /* Core */,
+				0241B10529B9289800C7D2AB /* Models */,
+				0241B0FB29B9272400C7D2AB /* Assets.xcassets */,
+				0241B0FD29B9272400C7D2AB /* Preview Content */,
+			);
+			path = DogDays;
+			sourceTree = "<group>";
+		};
+		0241B0FD29B9272400C7D2AB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0241B0FE29B9272400C7D2AB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0241B10529B9289800C7D2AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0241B10829B928D300C7D2AB /* Event.swift */,
+				0241B11E29C0B8C700C7D2AB /* ContactModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0241B10629B928A000C7D2AB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0241B12129C0B9C900C7D2AB /* Contact */,
+				0241B11329BBE3A700C7D2AB /* ViewModels */,
+				0241B10B29B92B7100C7D2AB /* Views */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0241B10729B928BA00C7D2AB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0241B10B29B92B7100C7D2AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0241B10C29B92B8400C7D2AB /* HomeView.swift */,
+				0241B11429BBE3C100C7D2AB /* AddEventView.swift */,
+				02ED125129C4F95E00104D10 /* EventDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0241B10E29B92C4B00C7D2AB /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				0241B10F29B92C6500C7D2AB /* Color.swift */,
+				0241B11829BD2A2F00C7D2AB /* PreviewProvider.swift */,
+				02C5FB7429C0FD2600A0BB1E /* String.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		0241B11329BBE3A700C7D2AB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0241B11129B93CF600C7D2AB /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0241B12129C0B9C900C7D2AB /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				0241B12329C0B9DD00C7D2AB /* ViewModels */,
+				0241B12229C0B9D200C7D2AB /* Views */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		0241B12229C0B9D200C7D2AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0241B12629C0BC0300C7D2AB /* ContactsView.swift */,
+				0241B12829C0C27D00C7D2AB /* AddContactView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0241B12329C0B9DD00C7D2AB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0241B12429C0BA0000C7D2AB /* ContactViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0241B0F329B9272200C7D2AB /* DogDays */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0241B10229B9272400C7D2AB /* Build configuration list for PBXNativeTarget "DogDays" */;
+			buildPhases = (
+				0241B0F029B9272200C7D2AB /* Sources */,
+				0241B0F129B9272200C7D2AB /* Frameworks */,
+				0241B0F229B9272200C7D2AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DogDays;
+			productName = DogDays;
+			productReference = 0241B0F429B9272200C7D2AB /* DogDays.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0241B0EC29B9272200C7D2AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					0241B0F329B9272200C7D2AB = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 0241B0EF29B9272200C7D2AB /* Build configuration list for PBXProject "DogDays" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0241B0EB29B9272200C7D2AB;
+			productRefGroup = 0241B0F529B9272200C7D2AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0241B0F329B9272200C7D2AB /* DogDays */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0241B0F229B9272200C7D2AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0241B0FF29B9272400C7D2AB /* Preview Assets.xcassets in Resources */,
+				0241B0FC29B9272400C7D2AB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0241B0F029B9272200C7D2AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0241B10D29B92B8400C7D2AB /* HomeView.swift in Sources */,
+				02ED125229C4F95E00104D10 /* EventDetailView.swift in Sources */,
+				0241B12529C0BA0000C7D2AB /* ContactViewModel.swift in Sources */,
+				0241B11529BBE3C100C7D2AB /* AddEventView.swift in Sources */,
+				0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */,
+				02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */,
+				0241B11029B92C6500C7D2AB /* Color.swift in Sources */,
+				0241B10929B928D300C7D2AB /* Event.swift in Sources */,
+				0241B11229B93CF600C7D2AB /* HomeViewModel.swift in Sources */,
+				0241B11929BD2A2F00C7D2AB /* PreviewProvider.swift in Sources */,
+				0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */,
+				0241B11F29C0B8C800C7D2AB /* ContactModel.swift in Sources */,
+				0241B12929C0C27D00C7D2AB /* AddContactView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0241B10029B9272400C7D2AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0241B10129B9272400C7D2AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0241B10329B9272400C7D2AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DogDays/Preview Content\"";
+				DEVELOPMENT_TEAM = MW75NQ7TG5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AaronWilson.DogDays;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0241B10429B9272400C7D2AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DogDays/Preview Content\"";
+				DEVELOPMENT_TEAM = MW75NQ7TG5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AaronWilson.DogDays;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0241B0EF29B9272200C7D2AB /* Build configuration list for PBXProject "DogDays" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0241B10029B9272400C7D2AB /* Debug */,
+				0241B10129B9272400C7D2AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0241B10229B9272400C7D2AB /* Build configuration list for PBXNativeTarget "DogDays" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0241B10329B9272400C7D2AB /* Debug */,
+				0241B10429B9272400C7D2AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0241B0EC29B9272200C7D2AB /* Project object */;
+}
