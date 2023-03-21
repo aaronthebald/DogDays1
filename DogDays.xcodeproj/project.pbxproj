@@ -20,8 +20,8 @@
 		0241B12529C0BA0000C7D2AB /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12429C0BA0000C7D2AB /* ContactViewModel.swift */; };
 		0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12629C0BC0300C7D2AB /* ContactsView.swift */; };
 		0241B12929C0C27D00C7D2AB /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12829C0C27D00C7D2AB /* AddContactView.swift */; };
+		02755B3529C8F656001F6593 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02755B3429C8F656001F6593 /* EditEventView.swift */; };
 		02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5FB7429C0FD2600A0BB1E /* String.swift */; };
-		02ED125229C4F95E00104D10 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ED125129C4F95E00104D10 /* EventDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +39,8 @@
 		0241B12429C0BA0000C7D2AB /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		0241B12629C0BC0300C7D2AB /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		0241B12829C0C27D00C7D2AB /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
+		02755B3429C8F656001F6593 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		02C5FB7429C0FD2600A0BB1E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		02ED125129C4F95E00104D10 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 			children = (
 				0241B10C29B92B8400C7D2AB /* HomeView.swift */,
 				0241B11429BBE3C100C7D2AB /* AddEventView.swift */,
-				02ED125129C4F95E00104D10 /* EventDetailView.swift */,
+				02755B3429C8F656001F6593 /* EditEventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,12 +243,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0241B10D29B92B8400C7D2AB /* HomeView.swift in Sources */,
-				02ED125229C4F95E00104D10 /* EventDetailView.swift in Sources */,
 				0241B12529C0BA0000C7D2AB /* ContactViewModel.swift in Sources */,
 				0241B11529BBE3C100C7D2AB /* AddEventView.swift in Sources */,
 				0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */,
 				02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */,
 				0241B11029B92C6500C7D2AB /* Color.swift in Sources */,
+				02755B3529C8F656001F6593 /* EditEventView.swift in Sources */,
 				0241B10929B928D300C7D2AB /* Event.swift in Sources */,
 				0241B11229B93CF600C7D2AB /* HomeViewModel.swift in Sources */,
 				0241B11929BD2A2F00C7D2AB /* PreviewProvider.swift in Sources */,

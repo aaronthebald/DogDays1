@@ -15,17 +15,17 @@ class HomeViewModel: ObservableObject {
     @Published var nextEvent: Event? = nil
     
     init() {
-        let event1 = Event(type: "Groomer", location: "Catwalk", date: Date(), title: "Hair cut", notification: false)
-        let event2 = Event(type: "Vet Visit", location: "Millcreek", date: Date(), title: "Dr D", notification: false)
-        let event3 = Event(type: "Medication", location: "Chewy.com", date: Date(), title: "Order Meds", notification: false)
-        let event4 = Event(type: "Task for Owner", location: "Home", date: Date(), title: "Go for walk", notification: false)
-        let event5 = Event(type: "PlayDate", location: "Central bark", date: Date(), title: "Daycare", notification: false)
+        let event1 = Event(type: "Groomer", location: "Catwalk", date: Date(), title: "Hair cut", notification: false, id: UUID().uuidString)
+        let event2 = Event(type: "Vet Visit", location: "Millcreek", date: Date(), title: "Dr D", notification: false, id: UUID().uuidString)
+        let event3 = Event(type: "Medication", location: "Chewy.com", date: Date(), title: "Order Meds", notification: false, id: UUID().uuidString)
+        let event4 = Event(type: "Task for Owner", location: "Home", date: Date(), title: "Go for walk", notification: false, id: UUID().uuidString)
+        let event5 = Event(type: "PlayDate", location: "Central bark", date: Date(), title: "Daycare", notification: false, id: UUID().uuidString)
 
         events.append(contentsOf: [event1, event2, event3, event4, event5])
     }
 
     func saveEvent(type: String, location: String, date: Date, title: String, notification: Bool) {
-        let newEvent = Event(type: type, location: location, date: date, title: title, notification: notification)
+        let newEvent = Event(type: type, location: location, date: date, title: title, notification: notification, id: UUID().uuidString)
         print(newEvent)
         events.append(newEvent)
         }
@@ -33,6 +33,13 @@ class HomeViewModel: ObservableObject {
     func deleteEvent(event: Event) {
         events.removeAll { Event in
             event.id == Event.id
+        }
+    }
+    
+    func updateEvent(event: Event) {
+        if let index = events.firstIndex(where: { $0.id == event.id }) {
+            events.remove(at: index)
+            events.append(event)
         }
     }
     

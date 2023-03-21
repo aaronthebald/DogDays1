@@ -12,10 +12,13 @@ struct HomeView: View {
     @StateObject  var vm: HomeViewModel
     @State var showAddSheet: Bool = false
     @State var showContactSheet: Bool = false
+    @State private var showEditSheet: Bool = false
     @State var showAllDetails: Bool = false
     @State var selectedEvent: Event? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
+    @State private var animate: Bool = false
+    
     
     let columns: [GridItem] = [
     GridItem(.flexible()),
@@ -41,6 +44,7 @@ struct HomeView: View {
                     }
                 }
             }
+            
             .alert("Are you sure?", isPresented: $showAlert, actions: {
                 HStack {
                     Button {
@@ -51,8 +55,14 @@ struct HomeView: View {
                     }
 
                     Button {
-                        vm.deleteEvent(event: selectedEvent!)
-                        selectedEvent = nil
+                        if let deletedEvent = selectedEvent {
+                            vm.deleteEvent(event: deletedEvent)
+                            selectedEvent = nil
+                            animate = false
+                        } else {
+                            print("Error deleting selected event")
+                        }
+                       
                     } label: {
                         Text("DELETE")
                 }
@@ -119,71 +129,100 @@ extension HomeView {
             spacing: 20,
             pinnedViews: []) {
                 ForEach(vm.events) { item in
-                    ZStack {
-                            Color.white
-                                VStack {
-                                    Image(systemName: vm.getImage(event: item))
-                                        .resizable()
-                                        .frame(width: 40, height: 40)
+                        ZStack {
+                                Color.white
+                            VStack {
+                                Image(systemName: vm.getImage(event: item))
+                                            .resizable()
+                                            .frame(width: 40, height: 40)
                                     Text(item.title)
-                                        .font(.title2)
-                                        .lineLimit(1)
+                                            .font(.title2)
+                                            .lineLimit(1)
                                     Text(item.location)
-                                        .font(.title2)
-                                        .lineLimit(1)
+                                            .font(.title2)
+                                            .lineLimit(1)
                                     Spacer()
                                     if showAllDetails {
                                         withAnimation {
                                             Text(item.date.formatted(date: .abbreviated, time: .shortened))
-                                                .font(.title2)
-                                                .padding(.horizontal, 4)
+                                                    .font(.title2)
+                                                    .padding(.horizontal, 4)
+                                            }
+                                            Spacer()
                                         }
-                                        Spacer()
                                     }
-                                }
-                                .padding(.top, 8)
-                            
-                        }
-                        .onTapGesture {
-                            withAnimation {
-                                showAllDetails.toggle()
+                                    .padding(.top, 8)
+                                
                             }
-                        }
-                        .onLongPressGesture(perform: {
-                            selectedEvent = item
-                        })
-                        .cornerRadius(10)
+                        .rotationEffect(.degrees(animate ? 2.5 : 0))
+                        .animation(animate ? .easeInOut(duration: 0.15).repeatForever(autoreverses: true) : .easeInOut(duration: 0.15), value: animate)
+                       
+                        
+                            .onTapGesture {
+                                withAnimation {
+                                    showAllDetails.toggle()
+                                }
+                            }
+                            .onLongPressGesture(perform: {
+                                animate = true
+                                selectedEvent = item
+                            })
+                            .cornerRadius(10)
                         .shadow(color: .black.opacity(0.3), radius: 10)
+                    
                       //  .frame(width: 125, height: 125)
                     }
                     .frame(width: 150, height: showAllDetails ? 225 : 150)
                 
                 .padding(.leading, 8)
                 .padding(.top)
+                
             }
     }
     
     private var upccomingEventsHeader: some View {
-        HStack {
+        VStack {
             Text("Upcoming Events.")
                 .font(.title)
                 .bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading)
             
-            Spacer()
-            
-            if selectedEvent != nil {
+            HStack {
                 Button {
-                    showAlert.toggle()
+                    if selectedEvent != nil {
+                        showEditSheet.toggle()
+                    }
                 } label: {
-                    Text("DELETE")
-                        .padding(.trailing)
+                    Text("Edit")
                 }
-            }
-            
-            
+                .sheet(isPresented: $showEditSheet) {
+                    EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
+                        .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
+                }
+                Button {
+                    animate = false
+                    selectedEvent = nil
+                } label: {
+                    Text("Cancel")
+                }
 
+                Spacer()
+                
+                    Button {
+                        if selectedEvent != nil {
+                            showAlert.toggle()
+                            animate.toggle()
+                        }
+                    } label: {
+                        Text("DELETE")
+                    }
+                    .buttonStyle(BorderedProminentButtonStyle())
+                    .tint(selectedEvent != nil ? .red : .gray)
+                }
+                
+            .padding(.horizontal)
+            
         }
     }
 }

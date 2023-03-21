@@ -23,8 +23,7 @@ struct Event: Identifiable {
     let location: String
     let date: Date
     let title: String
-//    let imageName: String
     let notification: Bool
-    var id: String {
-        title + location
-    }}
+    var id: String
+    
+}
