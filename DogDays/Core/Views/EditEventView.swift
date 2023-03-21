@@ -92,7 +92,6 @@ extension EditEventView {
         .padding(.horizontal)
         .background(Color.white)
         .cornerRadius(10)
-       // .padding(6)
 
         
         
@@ -105,15 +104,6 @@ extension EditEventView {
                 if let selectedEvent = selectedEvent {
                     vm.updateEvent(event: returnUpdatedEvent(selectedEvent: selectedEvent) ?? selectedEvent)
                 }
-                    
-                    
-                
-                
-                
-//                vm.saveEvent(type: newEventSelection, location: newEventLocation, date: newEventDate, title: newEventTitle, notification: newEventNotificationBool)
-//                if let deletedEvent = selectedEvent {
-//                    vm.deleteEvent(event: deletedEvent)
-//                }
             }
                 label: {
                 Text("Save")

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0225118629CA1713009B9AD9 /* EventTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225118529CA1713009B9AD9 /* EventTileView.swift */; };
 		0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B0F729B9272200C7D2AB /* DogDaysApp.swift */; };
 		0241B0FC29B9272400C7D2AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FB29B9272400C7D2AB /* Assets.xcassets */; };
 		0241B0FF29B9272400C7D2AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FE29B9272400C7D2AB /* Preview Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0225118529CA1713009B9AD9 /* EventTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTileView.swift; sourceTree = "<group>"; };
 		0241B0F429B9272200C7D2AB /* DogDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0241B0F729B9272200C7D2AB /* DogDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDaysApp.swift; sourceTree = "<group>"; };
 		0241B0FB29B9272400C7D2AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				0241B10C29B92B8400C7D2AB /* HomeView.swift */,
 				0241B11429BBE3C100C7D2AB /* AddEventView.swift */,
 				02755B3429C8F656001F6593 /* EditEventView.swift */,
+				0225118529CA1713009B9AD9 /* EventTileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				0241B11229B93CF600C7D2AB /* HomeViewModel.swift in Sources */,
 				0241B11929BD2A2F00C7D2AB /* PreviewProvider.swift in Sources */,
 				0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */,
+				0225118629CA1713009B9AD9 /* EventTileView.swift in Sources */,
 				0241B11F29C0B8C800C7D2AB /* ContactModel.swift in Sources */,
 				0241B12929C0C27D00C7D2AB /* AddContactView.swift in Sources */,
 			);

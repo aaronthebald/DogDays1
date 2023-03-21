@@ -13,6 +13,7 @@ class HomeViewModel: ObservableObject {
     @Published var events: [Event] = []
     @Published var imageName: String = ""
     @Published var nextEvent: Event? = nil
+    @Published var animate: Bool = false
     
     init() {
         let event1 = Event(type: "Groomer", location: "Catwalk", date: Date(), title: "Hair cut", notification: false, id: UUID().uuidString)
