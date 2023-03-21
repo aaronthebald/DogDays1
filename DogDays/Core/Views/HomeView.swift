@@ -17,8 +17,7 @@ struct HomeView: View {
     @State var selectedEvent: Event? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
-    @State private var animate: Bool = false
-    
+        
     
     let columns: [GridItem] = [
     GridItem(.flexible()),
@@ -36,7 +35,6 @@ struct HomeView: View {
                         Spacer(minLength: 30)
                         upccomingEventsHeader
                         eventGrid
-                        
                     }
                     .sheet(isPresented: $showAddSheet) {
                         AddEventView(vm: vm, showAddSheet: $showAddSheet)
@@ -44,7 +42,6 @@ struct HomeView: View {
                     }
                 }
             }
-            
             .alert("Are you sure?", isPresented: $showAlert, actions: {
                 HStack {
                     Button {
@@ -58,11 +55,9 @@ struct HomeView: View {
                         if let deletedEvent = selectedEvent {
                             vm.deleteEvent(event: deletedEvent)
                             selectedEvent = nil
-                            animate = false
                         } else {
                             print("Error deleting selected event")
                         }
-                       
                     } label: {
                         Text("DELETE")
                 }
@@ -72,7 +67,6 @@ struct HomeView: View {
             .sheet(isPresented: $showContactSheet) {
                 ContactsView(showContactSheet: $showContactSheet)
             }
-        
     }
   }
 
@@ -129,54 +123,10 @@ extension HomeView {
             spacing: 20,
             pinnedViews: []) {
                 ForEach(vm.events) { item in
-                        ZStack {
-                                Color.white
-                            VStack {
-                                Image(systemName: vm.getImage(event: item))
-                                            .resizable()
-                                            .frame(width: 40, height: 40)
-                                    Text(item.title)
-                                            .font(.title2)
-                                            .lineLimit(1)
-                                    Text(item.location)
-                                            .font(.title2)
-                                            .lineLimit(1)
-                                    Spacer()
-                                    if showAllDetails {
-                                        withAnimation {
-                                            Text(item.date.formatted(date: .abbreviated, time: .shortened))
-                                                    .font(.title2)
-                                                    .padding(.horizontal, 4)
-                                            }
-                                            Spacer()
-                                        }
-                                    }
-                                    .padding(.top, 8)
-                                
-                            }
-                        .rotationEffect(.degrees(animate ? 2.5 : 0))
-                        .animation(animate ? .easeInOut(duration: 0.15).repeatForever(autoreverses: true) : .easeInOut(duration: 0.15), value: animate)
-                       
-                        
-                            .onTapGesture {
-                                withAnimation {
-                                    showAllDetails.toggle()
-                                }
-                            }
-                            .onLongPressGesture(perform: {
-                                animate = true
-                                selectedEvent = item
-                            })
-                            .cornerRadius(10)
-                        .shadow(color: .black.opacity(0.3), radius: 10)
-                    
-                      //  .frame(width: 125, height: 125)
-                    }
-                    .frame(width: 150, height: showAllDetails ? 225 : 150)
-                
+                    EventTileView(item: item, vm: vm, selectedEvent:$selectedEvent, showAllDetails: showAllDetails )
+                }
                 .padding(.leading, 8)
                 .padding(.top)
-                
             }
     }
     
@@ -186,7 +136,7 @@ extension HomeView {
                 .font(.title)
                 .bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading)
+                .padding(.leading)
             
             HStack {
                 Button {
@@ -196,23 +146,19 @@ extension HomeView {
                 } label: {
                     Text("Edit")
                 }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .tint(selectedEvent != nil ? .blue : .gray)
                 .sheet(isPresented: $showEditSheet) {
                     EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
                         .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
                 }
-                Button {
-                    animate = false
-                    selectedEvent = nil
-                } label: {
-                    Text("Cancel")
-                }
+                
 
                 Spacer()
                 
                     Button {
                         if selectedEvent != nil {
                             showAlert.toggle()
-                            animate.toggle()
                         }
                     } label: {
                         Text("DELETE")

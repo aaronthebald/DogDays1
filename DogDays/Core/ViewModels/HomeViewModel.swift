@@ -7,12 +7,17 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class HomeViewModel: ObservableObject {
     
     @Published var events: [Event] = []
     @Published var imageName: String = ""
     @Published var nextEvent: Event? = nil
+    @Published var animate: Bool = false
+    
+    private let eventsDataService = EventsDataService()
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         let event1 = Event(type: "Groomer", location: "Catwalk", date: Date(), title: "Hair cut", notification: false, id: UUID().uuidString)
@@ -20,20 +25,34 @@ class HomeViewModel: ObservableObject {
         let event3 = Event(type: "Medication", location: "Chewy.com", date: Date(), title: "Order Meds", notification: false, id: UUID().uuidString)
         let event4 = Event(type: "Task for Owner", location: "Home", date: Date(), title: "Go for walk", notification: false, id: UUID().uuidString)
         let event5 = Event(type: "PlayDate", location: "Central bark", date: Date(), title: "Daycare", notification: false, id: UUID().uuidString)
-
+        
         events.append(contentsOf: [event1, event2, event3, event4, event5])
+        
     }
-
+    
+    func setUp() {
+        eventsDataService.$savedEntities
+            .map(mapEntityToEvent)
+            .sink { [weak self] mappedEntities in
+                self?.events = mappedEntities
+            }
+            .store(in: &cancellables)
+                                
+    }
+    
+    
     func saveEvent(type: String, location: String, date: Date, title: String, notification: Bool) {
         let newEvent = Event(type: type, location: location, date: date, title: title, notification: notification, id: UUID().uuidString)
         print(newEvent)
         events.append(newEvent)
-        }
+        eventsDataService.updateEvents(event: newEvent)
+    }
     
     func deleteEvent(event: Event) {
         events.removeAll { Event in
             event.id == Event.id
         }
+        
     }
     
     func updateEvent(event: Event) {
@@ -42,6 +61,41 @@ class HomeViewModel: ObservableObject {
             events.append(event)
         }
     }
+    
+   
+    func mapEntityToEvent(entity: [EventEntity]){
+        ForEach(entity, id: \.self) { entity in
+            let event: Event = {
+                event.title = entity.title
+                event.location = entity.location
+                event.date.description = entity.date
+                event.notification = entity.notification
+                event.id = entity.id
+            }()
+            
+            events.append(event)
+            
+        }
+            
+       
+    }
+    
+//    func mapEntityToEvent(entity: [EventEntity]) {
+//        ForEach(entity, id: \.self) { entity in
+//            let event: Event = {
+//                entity.title = event.title
+//                entity.location = event.location
+//                entity.date = event.date.description
+//                entity.notification = event.notification
+//                entity.id = event.id
+//            }()
+//
+//            events.append(event)
+//
+//        }
+//
+//
+//    }
     
     
     // returns string for image based on event.type

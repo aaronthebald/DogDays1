@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0225118629CA1713009B9AD9 /* EventTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225118529CA1713009B9AD9 /* EventTileView.swift */; };
+		0225118929CA6389009B9AD9 /* EventData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0225118729CA6389009B9AD9 /* EventData.xcdatamodeld */; };
+		0225118B29CA64F6009B9AD9 /* EventsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225118A29CA64F6009B9AD9 /* EventsDataService.swift */; };
 		0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B0F729B9272200C7D2AB /* DogDaysApp.swift */; };
 		0241B0FC29B9272400C7D2AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FB29B9272400C7D2AB /* Assets.xcassets */; };
 		0241B0FF29B9272400C7D2AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FE29B9272400C7D2AB /* Preview Assets.xcassets */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0225118529CA1713009B9AD9 /* EventTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTileView.swift; sourceTree = "<group>"; };
+		0225118829CA6389009B9AD9 /* EventData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventData.xcdatamodel; sourceTree = "<group>"; };
+		0225118A29CA64F6009B9AD9 /* EventsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDataService.swift; sourceTree = "<group>"; };
 		0241B0F429B9272200C7D2AB /* DogDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0241B0F729B9272200C7D2AB /* DogDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDaysApp.swift; sourceTree = "<group>"; };
 		0241B0FB29B9272400C7D2AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 			children = (
 				0241B10829B928D300C7D2AB /* Event.swift */,
 				0241B11E29C0B8C700C7D2AB /* ContactModel.swift */,
+				0225118729CA6389009B9AD9 /* EventData.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -114,6 +121,7 @@
 		0241B10729B928BA00C7D2AB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0225118A29CA64F6009B9AD9 /* EventsDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -124,6 +132,7 @@
 				0241B10C29B92B8400C7D2AB /* HomeView.swift */,
 				0241B11429BBE3C100C7D2AB /* AddEventView.swift */,
 				02755B3429C8F656001F6593 /* EditEventView.swift */,
+				0225118529CA1713009B9AD9 /* EventTileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,6 +253,7 @@
 			files = (
 				0241B10D29B92B8400C7D2AB /* HomeView.swift in Sources */,
 				0241B12529C0BA0000C7D2AB /* ContactViewModel.swift in Sources */,
+				0225118B29CA64F6009B9AD9 /* EventsDataService.swift in Sources */,
 				0241B11529BBE3C100C7D2AB /* AddEventView.swift in Sources */,
 				0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */,
 				02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */,
@@ -253,7 +263,9 @@
 				0241B11229B93CF600C7D2AB /* HomeViewModel.swift in Sources */,
 				0241B11929BD2A2F00C7D2AB /* PreviewProvider.swift in Sources */,
 				0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */,
+				0225118629CA1713009B9AD9 /* EventTileView.swift in Sources */,
 				0241B11F29C0B8C800C7D2AB /* ContactModel.swift in Sources */,
+				0225118929CA6389009B9AD9 /* EventData.xcdatamodeld in Sources */,
 				0241B12929C0C27D00C7D2AB /* AddContactView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +467,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0225118729CA6389009B9AD9 /* EventData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0225118829CA6389009B9AD9 /* EventData.xcdatamodel */,
+			);
+			currentVersion = 0225118829CA6389009B9AD9 /* EventData.xcdatamodel */;
+			path = EventData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0241B0EC29B9272200C7D2AB /* Project object */;
 }
