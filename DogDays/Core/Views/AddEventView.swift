@@ -102,9 +102,12 @@ extension AddEventView {
         HStack {
             Spacer()
             Button {
-                showAddSheet.toggle()
+                
 //                vm.textVM()
-                vm.saveEvent(type: newEventSelection, location: newEventLocation, date: newEventDate, title: newEventTitle, notification: newEventNotificationBool)
+                let newEvent = Event(type: newEventSelection, location: newEventLocation, date: newEventDate, title: newEventTitle, notification: newEventNotificationBool, id: UUID().uuidString)
+                print("Button pressed")
+                vm.add(event: newEvent)
+                showAddSheet.toggle()
                 
             } label: {
                 Text("Save")

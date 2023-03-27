@@ -9,10 +9,10 @@ import SwiftUI
 
 struct EventTileView: View {
     
-    let item: Event
+    let item: EventEntity
     @ObservedObject var vm: HomeViewModel
     
-    @Binding var selectedEvent: Event?
+    @Binding var selectedEvent: EventEntity?
     @State var animate: Bool = false
     @State var buttonTitle: String = ""
     @State var showAllDetails: Bool
@@ -29,16 +29,16 @@ struct EventTileView: View {
                 Image(systemName: vm.getImage(event: item))
                             .resizable()
                             .frame(width: 40, height: 40)
-                    Text(item.title)
+                Text(item.title ?? "")
                             .font(.title2)
                             .lineLimit(1)
-                    Text(item.location)
+                Text(item.location ?? "")
                             .font(.title2)
                             .lineLimit(1)
                     Spacer()
                     if showAllDetails {
                         withAnimation {
-                            Text(item.date.formatted(date: .abbreviated, time: .shortened))
+                            Text(item.date?.formatted(date: .abbreviated, time: .shortened) ?? "")
                                     .font(.title2)
                                     .padding(.horizontal, 4)
                             }
@@ -48,6 +48,7 @@ struct EventTileView: View {
                 
                     .padding(.top, 8)
                 }
+                .frame(width: 175, height: 150)
                     .overlay(alignment: .topTrailing) {
                         if selectedEvent != nil {
                             overlay
@@ -74,7 +75,7 @@ struct EventTileView: View {
 extension EventTileView {
     private var overlay: some View {
         Button {
-            animate.toggle()
+            animate = false
             selectedEvent = nil
        } label: {
            Image(systemName: buttonTitle)

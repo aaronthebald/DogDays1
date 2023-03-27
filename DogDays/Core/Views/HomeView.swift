@@ -14,14 +14,14 @@ struct HomeView: View {
     @State var showContactSheet: Bool = false
     @State private var showEditSheet: Bool = false
     @State var showAllDetails: Bool = false
-    @State var selectedEvent: Event? = nil
+    @State var selectedEvent: EventEntity? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
         
     
     let columns: [GridItem] = [
-    GridItem(.flexible()),
-    GridItem(.flexible())
+        GridItem(.flexible(), alignment: .top),
+        GridItem(.flexible(), alignment: .top)
 ]
     
     var body: some View {
@@ -53,7 +53,7 @@ struct HomeView: View {
 
                     Button {
                         if let deletedEvent = selectedEvent {
-                            vm.deleteEvent(event: deletedEvent)
+                            vm.delete(entity: deletedEvent)
                             selectedEvent = nil
                         } else {
                             print("Error deleting selected event")
@@ -123,7 +123,7 @@ extension HomeView {
             spacing: 20,
             pinnedViews: []) {
                 ForEach(vm.events) { item in
-                    EventTileView(item: item, vm: vm, selectedEvent:$selectedEvent, showAllDetails: showAllDetails )
+                    EventTileView(item: item, vm: vm, selectedEvent: $selectedEvent, showAllDetails: showAllDetails )
                 }
                 .padding(.leading, 8)
                 .padding(.top)
