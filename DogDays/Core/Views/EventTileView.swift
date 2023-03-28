@@ -16,7 +16,6 @@ struct EventTileView: View {
     @State var animate: Bool = false
     @State var buttonTitle: String = ""
     @State var showAllDetails: Bool
-    
     @State var backgroundColor: Color = Color.white
     
     
@@ -25,43 +24,41 @@ struct EventTileView: View {
         
         ZStack {
             backgroundColor.animation(.none)
-            VStack {
-                Image(systemName: vm.getImage(event: item))
-                            .resizable()
+            VStack( alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Image(systemName: vm.getImage(event: item))
+                                .resizable()
                             .frame(width: 40, height: 40)
+                }
                 Text(item.title ?? "")
                             .font(.title2)
                             .lineLimit(1)
                 Text(item.location ?? "")
                             .font(.title2)
                             .lineLimit(1)
-                    Spacer()
-                    if showAllDetails {
-                        withAnimation {
-                            Text(item.date?.formatted(date: .abbreviated, time: .shortened) ?? "")
-                                    .font(.title2)
-                                    .padding(.horizontal, 4)
-                            }
+                Text(item.date?.formatted(date: .abbreviated, time: .omitted) ?? "")
+                    .multilineTextAlignment(.leading)
+                    .font(.title2)
+                    .padding(.horizontal, 4)
+                Text(item.date?.formatted(date: .omitted, time: .shortened) ?? "")
+                    .multilineTextAlignment(.leading)
+                    .font(.title2)
+                    .padding(.horizontal, 4)
+                            
                             Spacer()
-                        }
+                        
                     }
-                
+                    .padding()
                     .padding(.top, 8)
                 }
-                .frame(width: 175, height: 150)
-                    .overlay(alignment: .topTrailing) {
-                        if selectedEvent != nil {
+                .frame(width: 175, height: 160)
+                .overlay(alignment: .topLeading) {
+                        if selectedEvent == item{
                             overlay
                             }
                         }
-                    .rotationEffect(.degrees(animate ? 2.5 : 0))
-                    .animation(animate ? .easeInOut(duration: 0.15).repeatForever(autoreverses: true) : .easeInOut(duration: 0.15), value: animate)
-                    .onTapGesture {
-                        withAnimation {
-                            showAllDetails.toggle()
-                            }
-                        }
-                    .onLongPressGesture(perform: {
+                .onLongPressGesture(perform: {
                         buttonTitle = "checkmark.circle"
                         selectedEvent = item
                         animate = true

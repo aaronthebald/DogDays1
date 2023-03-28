@@ -17,6 +17,7 @@ struct HomeView: View {
     @State var selectedEvent: EventEntity? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
+    @State var shadowAnimation: Bool = false
     
     let columns: [GridItem] = [
         GridItem(.flexible(), alignment: .top),
@@ -33,6 +34,10 @@ struct HomeView: View {
                         weatherView
                         Spacer(minLength: 30)
                         upccomingEventsHeader
+                        if vm.events.isEmpty {
+                            Spacer()
+                            welcomeBubble
+                        }
                         eventGrid
                     }
                     .sheet(isPresented: $showAddSheet) {
@@ -41,6 +46,10 @@ struct HomeView: View {
                     }
                 }
             }
+            .onAppear {
+                NotificationManager.instance.requestAuthorization()
+            }
+        			
             .alert("Are you sure?", isPresented: $showAlert, actions: {
                 HStack {
                     Button {
@@ -169,5 +178,27 @@ extension HomeView {
             .padding(.horizontal)
             
         }
+    }
+    private var welcomeBubble: some View {
+        HStack(alignment: .center) {
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color.white)
+                .shadow(color: .black, radius: shadowAnimation ? 14 : 10)
+                .overlay(
+                Text("Welcome to DogDays! Click the plus icon in the top right corner to add your first event and get started!")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                )
+                .frame(width: 300, height: 175)
+                
+                
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                shadowAnimation = true
+            }
+        }
+        
+        .frame(maxWidth: .infinity)
     }
 }

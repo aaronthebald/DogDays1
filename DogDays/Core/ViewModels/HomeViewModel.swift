@@ -14,10 +14,9 @@ class HomeViewModel: ObservableObject {
     
     @Published var events: [EventEntity] = []
     @Published var imageName: String = ""
-    @Published var nextEvent: Event? = nil
+    @Published var sortedEvents: [EventEntity] = []
     @Published var animate: Bool = false
     
-//    private let eventsDataService = EventsDataService()
     private var cancellables = Set<AnyCancellable>()
     
     private let container: NSPersistentContainer
@@ -25,13 +24,6 @@ class HomeViewModel: ObservableObject {
     private let entityName: String = "EventEntity"
     
     init() {
-//        let event1 = Event(type: "Groomer", location: "Catwalk", date: Date(), title: "Hair cut", notification: false, id: UUID().uuidString)
-//        let event2 = Event(type: "Vet Visit", location: "Millcreek", date: Date(), title: "Dr D", notification: false, id: UUID().uuidString)
-//        let event3 = Event(type: "Medication", location: "Chewy.com", date: Date(), title: "Order Meds", notification: false, id: UUID().uuidString)
-//        let event4 = Event(type: "Task for Owner", location: "Home", date: Date(), title: "Go for walk", notification: false, id: UUID().uuidString)
-//        let event5 = Event(type: "PlayDate", location: "Central bark", date: Date(), title: "Daycare", notification: false, id: UUID().uuidString)
-        
-      //  events.append(contentsOf: [event1, event2, event3, event4, event5])
         container = NSPersistentContainer(name: containerName)
             container.loadPersistentStores { _, error in
                 if let error = error {
@@ -39,18 +31,10 @@ class HomeViewModel: ObservableObject {
                 }
                 self.getEvents()
             }
-//        events.append(contentsOf: [ event1, event2, event3, event4, event5])
+        sortEvents()
     }
     
-//    func setUp() {
-//        eventsDataService.$savedEntities
-//            .map(mapEntityToEvent)
-//            .sink { [weak self] mappedEntities in
-//                self?.events = mappedEntities
-//            }
-//            .store(in: &cancellables)
-//
-//    }
+
     
     
     private func getEvents() {
@@ -61,27 +45,7 @@ class HomeViewModel: ObservableObject {
             print("Error catching portfolio entities \(error)")
         }
     }
-    // old func
-//    func saveEvent(type: String, location: String, date: Date, title: String, notification: Bool) {
-//        let newEvent = Event(type: type, location: location, date: date, title: title, notification: notification, id: UUID().uuidString)
-//        print(newEvent)
-//        events.append(newEvent)
-//        eventsDataService.updateEvents(event: newEvent)
-//    }
-    // old func
-//    func deleteEvent(event: EventEntity) {
-//        events.removeAll { Event in
-//            event.id == Event.id
-//        }
-//    }
-    // old func
-//    func updateEvent(event: EventEntity) {
-//        if let index = events.firstIndex(where: { $0.id == event.id }) {
-//            events.remove(at: index)
-//
-//           applyChanges()
-//        }
-//    }
+
     func updateEvent(event: EventEntity) {
        // print(event)
         if let entity = events.first(where: {$0.id == event.id}) {
@@ -96,19 +60,7 @@ class HomeViewModel: ObservableObject {
         print("Vm connected")
     }
 
-//    func updateEvent(event: EventEntity) {
-//        print(event)
-//        let entity = EventEntity(context: container.viewContext)
-//        entity.title = event.title
-//        entity.location = event.location
-//        entity.type = event.type
-//        entity.date = event.date
-//        entity.notification = event.notification
-//        entity.id = event.id
-//        print(entity)
-//        applyChanges()
-//        print("Vm connected")
-//    }
+
     
      func add(event: Event) {
         let entity = EventEntity(context: container.viewContext)
@@ -140,39 +92,7 @@ class HomeViewModel: ObservableObject {
         save()
         getEvents()
     }
-//    func mapEntityToEvent(entity: [EventEntity]){
-//        ForEach(entity, id: \.self) { entity in
-//            let event: Event = {
-//                event.title = entity.title
-//                event.location = entity.location
-//                event.date.description = entity.date
-//                event.notification = entity.notification
-//                event.id = entity.id
-//            }()
-//
-//            events.append(event)
-//
-//        }
-//
-//
-//    }
-    
-//    func mapEntityToEvent(entity: [EventEntity]) {
-//        ForEach(entity, id: \.self) { entity in
-//            let event: Event = {
-//                entity.title = event.title
-//                entity.location = event.location
-//                entity.date = event.date.description
-//                entity.notification = event.notification
-//                entity.id = event.id
-//            }()
-//
-//            events.append(event)
-//
-//        }
-//
-//
-//    }
+
     
     
     // returns string for image based on event.type
@@ -209,4 +129,9 @@ class HomeViewModel: ObservableObject {
             return "questionmark.square"
         }
     }
+    
+    func sortEvents() {
+            sortedEvents = events.sorted(by: {$0.date?.timeIntervalSinceNow ?? .zero < $1.date?.timeIntervalSinceNow ?? .zero})
+    }
+    
 }

@@ -105,10 +105,16 @@ extension EditEventView {
                         
                         print(selectedEvent as Any)
                         vm.updateEvent(event: returnUpdatedEvent(selectedEvent: selectedEvent))
+                        if newEventNotificationBool == true {
+                        NotificationManager.instance.scheduleNotification(forDate: newEventDate)
+                        }
                         print("closure ran")
                         showEditSheet.toggle()
                         print(vm.events.count)
+                    
+                        
                 }
+                selectedEvent = nil
             }
                 label: {
                 Text("Save")
