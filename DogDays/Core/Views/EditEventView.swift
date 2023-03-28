@@ -11,9 +11,7 @@ struct EditEventView: View {
     @ObservedObject  var vm: HomeViewModel
     
     @Binding var selectedEvent: EventEntity?
-    
     @State var newEventLocation: String = ""
-    @State var updatedEvent: EventEntity?
     @State var newEventTitle: String = ""
     @State var newEventSelection: String = "Test"
     @State var newEventDate: Date = Date()
@@ -42,6 +40,7 @@ struct EditEventView: View {
             
         }
         .onAppear{
+            
             setValues()
         }
         .frame(height: 500)
@@ -101,14 +100,15 @@ extension EditEventView {
         HStack {
             Spacer()
             Button {
-                print(selectedEvent as Any)
-                  updatedEvent = returnUpdatedEvent(selectedEvent: selectedEvent!)
-                  //  print(updatedEvent as Any)
-                    vm.updateEvent(event: updatedEvent!)
-                    print("closure ran")
-                    selectedEvent = nil
-                    showEditSheet.toggle()
-                print(vm.events.count)
+                
+                if let selectedEvent = selectedEvent {
+                        
+                        print(selectedEvent as Any)
+                        vm.updateEvent(event: returnUpdatedEvent(selectedEvent: selectedEvent))
+                        print("closure ran")
+                        showEditSheet.toggle()
+                        print(vm.events.count)
+                }
             }
                 label: {
                 Text("Save")
@@ -128,54 +128,57 @@ extension EditEventView {
     }
     
     func returnUpdatedEvent(selectedEvent: EventEntity) -> EventEntity {
+        let updatedEvent = selectedEvent
             if newEventNotificationBool != selectedEvent.notification {
                 let newEvent = Event(type: selectedEvent.type ?? "Error", location: selectedEvent.location ?? "Error", date: selectedEvent.date ?? Date(), title: selectedEvent.title ?? "Error", notification: newEventNotificationBool, id: selectedEvent.id ?? "Error")
-                updatedEvent?.title = newEvent.title
-                updatedEvent?.location = newEvent.location
-                updatedEvent?.type = newEvent.type
-                updatedEvent?.date = newEvent.date
-                updatedEvent?.notification = newEvent.notification
-                updatedEvent?.id = newEvent.id
+                updatedEvent.title = newEvent.title
+                updatedEvent.location = newEvent.location
+                updatedEvent.type = newEvent.type
+                updatedEvent.date = newEvent.date
+                updatedEvent.notification = newEvent.notification
+                updatedEvent.id = newEvent.id
             }
             else if newEventDate != selectedEvent.date {
                 let newEvent = Event(type: selectedEvent.type ?? "error" , location: selectedEvent.location ?? "error", date: newEventDate, title: selectedEvent.title ?? "error", notification: selectedEvent.notification, id: selectedEvent.id ?? "error")
-                updatedEvent?.title = newEvent.title
-                updatedEvent?.location = newEvent.location
-                updatedEvent?.type = newEvent.type
-                updatedEvent?.date = newEvent.date
-                updatedEvent?.notification = newEvent.notification
-                updatedEvent?.id = newEvent.id
+                updatedEvent.title = newEvent.title
+                updatedEvent.location = newEvent.location
+                updatedEvent.type = newEvent.type
+                updatedEvent.date = newEvent.date
+                updatedEvent.notification = newEvent.notification
+                updatedEvent.id = newEvent.id
             }
             else if newEventLocation != selectedEvent.location {
                 let newEvent = Event(type: selectedEvent.type ?? "error", location: newEventLocation, date: selectedEvent.date ?? Date(), title: selectedEvent.title ?? "error", notification: selectedEvent.notification, id: selectedEvent.id ?? "error")
-                updatedEvent?.title = newEvent.title
-                updatedEvent?.location = newEvent.location
-                updatedEvent?.type = newEvent.type
-                updatedEvent?.date = newEvent.date
-                updatedEvent?.notification = newEvent.notification
-                updatedEvent?.id = newEvent.id
+                updatedEvent.title = newEvent.title
+                updatedEvent.location = newEvent.location
+                updatedEvent.type = newEvent.type
+                updatedEvent.date = newEvent.date
+                updatedEvent.notification = newEvent.notification
+                updatedEvent.id = newEvent.id
             }
             else if newEventTitle != selectedEvent.title {
                 let newEvent = Event(type: selectedEvent.type ?? "error", location: selectedEvent.location ?? "error", date: selectedEvent.date ?? Date(), title: newEventTitle, notification: selectedEvent.notification, id: selectedEvent.id ?? "error")
-                updatedEvent?.title = newEvent.title
-                updatedEvent?.location = newEvent.location
-                updatedEvent?.type = newEvent.type
-                updatedEvent?.date = newEvent.date
-                updatedEvent?.notification = newEvent.notification
-                updatedEvent?.id = newEvent.id
+                updatedEvent.title = newEvent.title
+                updatedEvent.location = newEvent.location
+                updatedEvent.type = newEvent.type
+                updatedEvent.date = newEvent.date
+                updatedEvent.notification = newEvent.notification
+                updatedEvent.id = newEvent.id
             }
             else if newEventSelection != selectedEvent.type {
                 let newEvent = Event(type: newEventSelection, location: selectedEvent.location ?? "error", date: selectedEvent.date ?? Date(), title: selectedEvent.title ?? "error", notification: selectedEvent.notification, id: selectedEvent.id ?? "error")
-                updatedEvent?.title = newEvent.title
-                updatedEvent?.location = newEvent.location
-                updatedEvent?.type = newEvent.type
-                updatedEvent?.date = newEvent.date
-                updatedEvent?.notification = newEvent.notification
-                updatedEvent?.id = newEvent.id
+                updatedEvent.title = newEvent.title
+                updatedEvent.location = newEvent.location
+                updatedEvent.type = newEvent.type
+                updatedEvent.date = newEvent.date
+                updatedEvent.notification = newEvent.notification
+                updatedEvent.id = newEvent.id
             }
         
+        
         print("Selected event is updated")
-       // print(updatedEvent)
-        return updatedEvent ?? selectedEvent
+        print(updatedEvent)
+        return updatedEvent
+       
     }
 }
