@@ -12,7 +12,7 @@
 		0233725C29D34F7E005D3C80 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0233725B29D34F7E005D3C80 /* NotificationManager.swift */; };
 		0233725E29D3722D005D3C80 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0233725D29D3722D005D3C80 /* WeatherModel.swift */; };
 		0233726229D377A5005D3C80 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0233726129D377A5005D3C80 /* WeatherViewModel.swift */; };
-		0233726529D3789C005D3C80 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0233726429D3789C005D3C80 /* WeatherView.swift */; };
+		0233726929D391F8005D3C80 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0233726829D391F8005D3C80 /* WeatherView.swift */; };
 		0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B0F729B9272200C7D2AB /* DogDaysApp.swift */; };
 		0241B0FC29B9272400C7D2AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FB29B9272400C7D2AB /* Assets.xcassets */; };
 		0241B0FF29B9272400C7D2AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FE29B9272400C7D2AB /* Preview Assets.xcassets */; };
@@ -36,7 +36,7 @@
 		0233725B29D34F7E005D3C80 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0233725D29D3722D005D3C80 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		0233726129D377A5005D3C80 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
-		0233726429D3789C005D3C80 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		0233726829D391F8005D3C80 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		0241B0F429B9272200C7D2AB /* DogDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0241B0F729B9272200C7D2AB /* DogDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDaysApp.swift; sourceTree = "<group>"; };
 		0241B0FB29B9272400C7D2AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		0233726329D3788D005D3C80 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0233726429D3789C005D3C80 /* WeatherView.swift */,
+				0233726829D391F8005D3C80 /* WeatherView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,7 +291,7 @@
 				0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */,
 				02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */,
 				0241B11029B92C6500C7D2AB /* Color.swift in Sources */,
-				0233726529D3789C005D3C80 /* WeatherView.swift in Sources */,
+				0233726929D391F8005D3C80 /* WeatherView.swift in Sources */,
 				0233725C29D34F7E005D3C80 /* NotificationManager.swift in Sources */,
 				02755B3529C8F656001F6593 /* EditEventView.swift in Sources */,
 				0233725A29CF8ECE005D3C80 /* EventContainer.xcdatamodeld in Sources */,

@@ -32,6 +32,7 @@ class HomeViewModel: ObservableObject {
                 self.getEvents()
             }
         sortEvents()
+        print("HomeVM ran")
     }
     
 

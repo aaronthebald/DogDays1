@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @StateObject  var vm: HomeViewModel
+    @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject private var wvm: WeatherViewModel
     @State var showAddSheet: Bool = false
     @State var showContactSheet: Bool = false
     @State private var showEditSheet: Bool = false
@@ -31,7 +32,10 @@ struct HomeView: View {
                     topIcons
                     VStack(alignment: .leading) {
                         
-                        weatherView
+                        WeatherView()
+                            .onAppear {
+                                wvm.fix()
+                            }
                         Spacer(minLength: 30)
                         upccomingEventsHeader
                         if vm.events.isEmpty {
@@ -82,7 +86,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            HomeView(vm: dev.homeVM)
+            HomeView()
         }
         
     }

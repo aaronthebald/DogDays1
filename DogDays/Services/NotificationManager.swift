@@ -17,7 +17,7 @@ class NotificationManager {
             if let error = error {
                 print("ERROR: \(error)")
             } else {
-                print("SUCCESS")
+                print("SUCCESS Notification permisson was established")
             }
         }
     }

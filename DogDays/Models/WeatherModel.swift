@@ -21,11 +21,10 @@
 import Foundation
 
 // MARK: - Welcome
-struct WeatherData: Identifiable, Codable {
+struct WeatherData: Codable {
     let latitude, longitude, generationtimeMS: Double
     let utcOffsetSeconds: Int
     let timezone, timezoneAbbreviation: String
-    let id: String
     let elevation: Int
     let dailyUnits: DailyUnits
     let daily: Daily
@@ -39,7 +38,6 @@ struct WeatherData: Identifiable, Codable {
         case elevation
         case dailyUnits = "daily_units"
         case daily
-        case id
     }
 }
 

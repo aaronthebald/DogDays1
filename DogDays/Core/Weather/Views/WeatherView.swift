@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @StateObject var wvm: WeatherViewModel = WeatherViewModel()
+    @EnvironmentObject private var wvm: WeatherViewModel
     var body: some View {
-        Text("Hello world")
-        ForEach(wvm.weather) { weather in
-            Text(weather.dailyUnits.time)
+        Text("Hello again")
+        ForEach(wvm.days) { day in
+            Text("Today the temp is...")
+            Text(day.temperature2MMax)
         }
     }
+    
 }
 
-struct WeatherView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeatherView()
-    }
-}
+//struct WeatherView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WeatherView()
+//    }
+//}
