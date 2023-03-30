@@ -45,17 +45,4 @@ class NotificationManager {
             }
         }
     }
-
-//    func scheduleNotificaton() {
-//        let content = UNMutableNotificationContent()
-//        content.title = "You have an upcoming Event!"
-//        content.sound = .default
-//        content.badge = 1
-//
-//        var date = DateC
-//
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: , repeats: <#T##Bool#>)
-//    }
-    
-    
 }

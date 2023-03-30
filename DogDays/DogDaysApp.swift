@@ -11,7 +11,6 @@ import SwiftUI
 struct DogDaysApp: App {
 
     @StateObject private var vm = HomeViewModel()
-    @StateObject private var wvm = WeatherViewModel()
     
     
     var body: some Scene {
@@ -19,9 +18,7 @@ struct DogDaysApp: App {
             NavigationStack {
                 HomeView()
             }
-            .environmentObject(vm)
-            .environmentObject(wvm)
-            
+            .environmentObject(vm)            
         }
     }
 }

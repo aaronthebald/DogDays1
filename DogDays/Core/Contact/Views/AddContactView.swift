@@ -11,7 +11,7 @@ struct AddContactView: View {
     
     @ObservedObject var vm: ContactViewModel
     @State var nameTextFieldText: String = ""
-    @State var categoryTextFieldText: String = ""
+    @State var categoryTextFieldText: String = "Groomer"
     @State var addressTextFieldText: String = ""
     @State var phoneTextFieldText: String = ""
     @State private var showAlert: Bool = false

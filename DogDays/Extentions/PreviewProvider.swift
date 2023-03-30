@@ -21,6 +21,5 @@ class DeveloperPreview {
     private init() { }
     
     let homeVM = HomeViewModel()
-    let homeWVM = WeatherViewModel()
     let event = Event(type: "Goomer", location: "Catwalk", date: Date(), title: "Puppy cut", notification: false, id: UUID().uuidString)
 }

@@ -11,12 +11,15 @@ import SwiftUI
 
 class WeatherViewModel: ObservableObject {
     
-    @Published var weather: [WeatherData] = []
+    @Published var weather: [Welcome] = []
     @Published var days: [DailyUnits] = []
+    @Published var posts: [PostModel] = []
     private var cancellables = Set<AnyCancellable>()
     
     init() {
      getPosts()
+        fix()
+        print(weather.count)
     }
     
     func fix() {
@@ -24,11 +27,12 @@ class WeatherViewModel: ObservableObject {
             days.append(newItem)
             print("Something")
         }
+        print("Error creating newItem")
     }
     
     func getPosts() {
         
-       guard let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=33.99&longitude=-81.07&daily=weathercode,temperature_2m_max&temperature_unit=fahrenheit&windspeed_unit=mph&forecast_days=1&timezone=auto") else {
+       guard let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=33.89&longitude=-81.13&daily=weathercode,temperature_2m_max&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&forecast_days=1&start_date=2023-03-29&end_date=2023-04-04&timezone=America%2FNew_York") else {
            print("Failed to get URL")
            return }
         
@@ -56,27 +60,24 @@ class WeatherViewModel: ObservableObject {
        //     .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
             .tryMap(handleOutput)
-            .retry(5)
-            .decode(type: [WeatherData].self, decoder: JSONDecoder())
-            .replaceError(with: [])
-            .sink(receiveValue: { [weak self] returnedWeather in
-                self?.weather = returnedWeather
-                self?.fix()
+            .decode(type: [Daily : DailyUnits].self, decoder: JSONDecoder()).print()
+            .replaceError(with: [ : ])
+            .sink(receiveValue: {  returnedWeather in
+                //self.days = returnedWeather
             })
             .store(in: &cancellables)
         print("GetPost ran")
-        print(weather.count)
-        
+       
     }
     
     func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
         guard
         let response = output.response as? HTTPURLResponse,
             response.statusCode >= 200 && response.statusCode < 300 else {
-            print("Shitty URL")
+            print("Crappy URL")
             throw URLError(.badServerResponse)
         }
+        print(output.data.debugDescription)
         return output.data
     }
-   
 }

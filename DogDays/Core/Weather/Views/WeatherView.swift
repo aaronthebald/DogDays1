@@ -11,10 +11,14 @@ struct WeatherView: View {
     @EnvironmentObject private var wvm: WeatherViewModel
     var body: some View {
         Text("Hello again")
-        ForEach(wvm.days) { day in
             Text("Today the temp is...")
-            Text(day.temperature2MMax)
+        Text(wvm.days.first?.temperature2MMax ?? "Error")
+        Button {
+            wvm.getPosts()
+        } label: {
+            Text("Button")
         }
+
     }
     
 }
