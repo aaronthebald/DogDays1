@@ -12,6 +12,7 @@ struct EventTileView: View {
     let item: EventEntity
     @ObservedObject var vm: HomeViewModel
     
+    
     @Binding var selectedEvent: EventEntity?
     @State var animate: Bool = false
     @State var buttonTitle: String = ""

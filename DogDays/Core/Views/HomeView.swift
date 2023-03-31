@@ -18,7 +18,7 @@ struct HomeView: View {
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
     @State var shadowAnimation: Bool = false
-    
+    @State var showButtons: Bool = false
     let columns: [GridItem] = [
         GridItem(.flexible(), alignment: .top),
         GridItem(.flexible(), alignment: .top)
@@ -31,12 +31,7 @@ struct HomeView: View {
                     topIcons
                     VStack(alignment: .leading) {
                         
-                        Spacer(minLength: 30)
-                        if selectedEvent != nil {
-                            withAnimation(.easeIn(duration: 4.0)) {
-                                upccomingEventsHeader
-                            }
-                        }
+                       upccomingEventsHeader
                         if vm.events.isEmpty {
                             Spacer()
                             welcomeBubble
@@ -149,8 +144,7 @@ extension HomeView {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
             
-            if selectedEvent != nil {
-                withAnimation(.easeIn(duration: 4.0)) {
+                withAnimation(.easeIn(duration: 10.0)) {
                     HStack {
                         Button {
                             if selectedEvent != nil {
@@ -159,8 +153,10 @@ extension HomeView {
                         } label: {
                             Text("Edit")
                         }
+                        
                         .buttonStyle(BorderedProminentButtonStyle())
                         .tint(selectedEvent != nil ? .blue : .gray)
+                        .opacity(selectedEvent != nil ? 1.0 : 0.0)
                         .sheet(isPresented: $showEditSheet) {
                             EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
                                 .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
@@ -177,11 +173,15 @@ extension HomeView {
                             .buttonStyle(BorderedProminentButtonStyle())
                             .tint(selectedEvent != nil ? .red : .gray)
                         }
+                        .opacity(selectedEvent != nil ? 1.0 : 0.0)
+                        .padding(.horizontal)
+                        .onAppear{
+                            withAnimation(.easeIn(duration: 10.0)) {
+                                self.selectedEvent = self.selectedEvent
+                            }
+                            }
                 }
-           
                 
-            .padding(.horizontal)
-            }
             
             
         }
