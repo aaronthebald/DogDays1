@@ -22,7 +22,6 @@ struct ContactsView: View {
         NavigationStack() {
             List {
                 contactCard
-                
             }
             .navigationTitle("Contacts")
 
@@ -59,8 +58,6 @@ struct ContactsView: View {
                     } label: {
                         Text("DELETE")
                     }
-
-
                 }
             }
         }

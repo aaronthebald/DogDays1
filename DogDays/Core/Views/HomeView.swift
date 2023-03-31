@@ -32,7 +32,11 @@ struct HomeView: View {
                     VStack(alignment: .leading) {
                         
                         Spacer(minLength: 30)
-                        upccomingEventsHeader
+                        if selectedEvent != nil {
+                            withAnimation(.easeIn(duration: 4.0)) {
+                                upccomingEventsHeader
+                            }
+                        }
                         if vm.events.isEmpty {
                             Spacer()
                             welcomeBubble
@@ -132,7 +136,7 @@ extension HomeView {
                 ForEach(vm.events) { item in
                     EventTileView(item: item, vm: vm, selectedEvent: $selectedEvent, showAllDetails: showAllDetails )
                 }
-                .padding(.leading, 8)
+                .padding(.horizontal, 8)
                 .padding(.top)
             }
     }
@@ -145,36 +149,40 @@ extension HomeView {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
             
-            HStack {
-                Button {
-                    if selectedEvent != nil {
-                        showEditSheet.toggle()
-                    }
-                } label: {
-                    Text("Edit")
-                }
-                .buttonStyle(BorderedProminentButtonStyle())
-                .tint(selectedEvent != nil ? .blue : .gray)
-                .sheet(isPresented: $showEditSheet) {
-                    EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
-                        .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
-                }
-                
-
-                Spacer()
-                
-                    Button {
-                        if selectedEvent != nil {
-                            showAlert.toggle()
+            if selectedEvent != nil {
+                withAnimation(.easeIn(duration: 4.0)) {
+                    HStack {
+                        Button {
+                            if selectedEvent != nil {
+                                showEditSheet.toggle()
+                            }
+                        } label: {
+                            Text("Edit")
                         }
-                    } label: {
-                        Text("DELETE")
-                    }
-                    .buttonStyle(BorderedProminentButtonStyle())
-                    .tint(selectedEvent != nil ? .red : .gray)
+                        .buttonStyle(BorderedProminentButtonStyle())
+                        .tint(selectedEvent != nil ? .blue : .gray)
+                        .sheet(isPresented: $showEditSheet) {
+                            EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
+                                .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
+                        }
+                        Spacer()
+                        
+                            Button {
+                                if selectedEvent != nil {
+                                    showAlert.toggle()
+                                }
+                            } label: {
+                                Text("DELETE")
+                            }
+                            .buttonStyle(BorderedProminentButtonStyle())
+                            .tint(selectedEvent != nil ? .red : .gray)
+                        }
                 }
+           
                 
             .padding(.horizontal)
+            }
+            
             
         }
     }

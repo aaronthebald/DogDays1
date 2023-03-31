@@ -32,19 +32,18 @@ struct EventTileView: View {
                             .frame(width: 40, height: 40)
                 }
                 Text(item.title ?? "")
-                            .font(.headline)
-                            .lineLimit(1)
+                            //.font(.headline)
+//                            .lineLimit(1)
+//                            .scaledToFit()
                 Text(item.location ?? "")
-                            .font(.headline)
-                            .lineLimit(1)
+//                            .font(.headline)
+//                            .lineLimit(1)
                 Text(item.date?.formatted(date: .abbreviated, time: .omitted) ?? "")
-                    .multilineTextAlignment(.leading)
-                    .font(.headline)
-                    .padding(.horizontal, 4)
+//                    .multilineTextAlignment(.leading)
+//                    .font(.headline)
                 Text(item.date?.formatted(date: .omitted, time: .shortened) ?? "")
-                    .multilineTextAlignment(.leading)
-                    .font(.headline)
-                    .padding(.horizontal, 4)
+//                    .multilineTextAlignment(.leading)
+//                    .font(.headline)
                             
                             Spacer()
                         
@@ -52,7 +51,7 @@ struct EventTileView: View {
                     .padding()
                     .padding(.top, 8)
                 }
-                .frame(width: 175, height: 160)
+               // .frame(width: 175, height: 160)
                 .overlay(alignment: .topLeading) {
                         if selectedEvent == item{
                             overlay
@@ -63,7 +62,7 @@ struct EventTileView: View {
                         selectedEvent = item
                         animate = true
                         })
-                    .cornerRadius(10)
+                    .cornerRadius(15)
                     .shadow(color: .black.opacity(0.3), radius: 10)
         
         }
