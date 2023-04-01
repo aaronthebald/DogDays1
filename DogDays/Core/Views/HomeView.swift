@@ -33,7 +33,7 @@ struct HomeView: View {
                         
                        upccomingEventsHeader
                         if vm.events.isEmpty {
-                            Spacer()
+                            Spacer(minLength: 100)
                             welcomeBubble
                         }
                         eventGrid
@@ -144,7 +144,6 @@ extension HomeView {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
             
-                withAnimation(.easeIn(duration: 10.0)) {
                     HStack {
                         Button {
                             if selectedEvent != nil {
@@ -155,8 +154,7 @@ extension HomeView {
                         }
                         
                         .buttonStyle(BorderedProminentButtonStyle())
-                        .tint(selectedEvent != nil ? .blue : .gray)
-                        .opacity(selectedEvent != nil ? 1.0 : 0.0)
+                        .tint(selectedEvent != nil ? .blue.opacity(0.75) : .gray)
                         .sheet(isPresented: $showEditSheet) {
                             EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
                                 .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
@@ -171,16 +169,10 @@ extension HomeView {
                                 Text("DELETE")
                             }
                             .buttonStyle(BorderedProminentButtonStyle())
-                            .tint(selectedEvent != nil ? .red : .gray)
+                            .tint(selectedEvent != nil ? .red.opacity(0.85) : .gray)
                         }
-                        .opacity(selectedEvent != nil ? 1.0 : 0.0)
                         .padding(.horizontal)
-                        .onAppear{
-                            withAnimation(.easeIn(duration: 10.0)) {
-                                self.selectedEvent = self.selectedEvent
-                            }
-                            }
-                }
+                        
                 
             
             

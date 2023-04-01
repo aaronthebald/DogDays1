@@ -11,6 +11,7 @@ struct ContactsView: View {
     
     @StateObject private var vm: ContactViewModel = ContactViewModel()
     
+    @State private var shadowAnimation: Bool = false
     @State private var showAlert: Bool = false
     @State private var alertTitle: String = ""
     @State var showAddContactView: Bool = false
@@ -20,8 +21,18 @@ struct ContactsView: View {
     
     var body: some View {
         NavigationStack() {
+            if vm.contacts.isEmpty {
+                VStack {
+                    Spacer(minLength: 100)
+                    contactBubble
+                        .frame(maxHeight: .infinity)
+                }
+            }
             List {
+                
                 contactCard
+                        
+                    
             }
             .navigationTitle("Contacts")
 
@@ -80,6 +91,7 @@ extension ContactsView {
     private var contactCard: some View {
         ForEach(vm.contacts) { contact in
             VStack(spacing: 5) {
+               
                 HStack {
                     Text("Name:")
                     Spacer()
@@ -117,5 +129,24 @@ extension ContactsView {
                 alertTitle = "Delete Contact?"
             })
         }
+    }
+    
+    private var contactBubble: some View {
+        HStack() {
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color.white)
+                .shadow(color: .black, radius: 14)
+                .overlay(
+                Text("On this screen you can keep up with important Contacts for your pup! Press the plus button to get started!")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                )
+                .frame(width: 300, height: 175)
+                
+                
+        }
+        
+        
+        .frame(maxWidth: .infinity)
     }
 }

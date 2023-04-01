@@ -25,16 +25,26 @@ struct AddContactView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                TextField("Add Name Here...", text: $nameTextFieldText)
-                contactCategoryPicker
-                TextField("Add Address Here...(Optional)", text: $addressTextFieldText).multilineTextAlignment(.leading)
-                TextField("Add Phone Number Here...", text: $phoneTextFieldText).keyboardType(.numberPad)
+            VStack {
+                List {
+                    TextField("Add Name Here...", text: $nameTextFieldText)
+                    contactCategoryPicker
+                    TextField("Add Address Here...(Optional)", text: $addressTextFieldText).multilineTextAlignment(.leading)
+                    TextField("Add Phone Number Here...", text: $phoneTextFieldText).keyboardType(.numberPad)
+                    HStack {
+                        Spacer()
+                        Button {
+                            saveButtonPressed()
+                        } label: {
+                            Text("Save")
+                        }
+                        .buttonStyle(BorderedProminentButtonStyle())
+
+                    }
+                }
+                .alert(isPresented: $showAlert, content: getAlert)
+                .navigationTitle("Add a Contact")
             }
-            .alert(isPresented: $showAlert, content: getAlert)
-            .navigationTitle("Add a Contact")
-            .toolbar {ToolbarItem(placement: .navigationBarTrailing) {toolBarItem}
-        }
         }
     }
 }
