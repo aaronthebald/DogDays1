@@ -9,19 +9,17 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @StateObject  var vm: HomeViewModel
+    @EnvironmentObject private var vm: HomeViewModel
     @State var showAddSheet: Bool = false
     @State var showContactSheet: Bool = false
     @State private var showEditSheet: Bool = false
-    @State var showAllDetails: Bool = false
-    @State var selectedEvent: Event? = nil
+    @State var selectedEvent: EventEntity? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
-        
-    
+    @State var shadowAnimation: Bool = false
     let columns: [GridItem] = [
-    GridItem(.flexible()),
-    GridItem(.flexible())
+        GridItem(.flexible(), alignment: .top),
+        GridItem(.flexible(), alignment: .top)
 ]
     
     var body: some View {
@@ -31,9 +29,11 @@ struct HomeView: View {
                     topIcons
                     VStack(alignment: .leading) {
                         
-                        weatherView
-                        Spacer(minLength: 30)
-                        upccomingEventsHeader
+                       upccomingEventsHeader
+                        if vm.events.isEmpty {
+                            Spacer(minLength: 100)
+                            welcomeBubble
+                        }
                         eventGrid
                     }
                     .sheet(isPresented: $showAddSheet) {
@@ -42,6 +42,10 @@ struct HomeView: View {
                     }
                 }
             }
+            .onAppear {
+                NotificationManager.instance.requestAuthorization()
+            }
+        			
             .alert("Are you sure?", isPresented: $showAlert, actions: {
                 HStack {
                     Button {
@@ -53,7 +57,7 @@ struct HomeView: View {
 
                     Button {
                         if let deletedEvent = selectedEvent {
-                            vm.deleteEvent(event: deletedEvent)
+                            vm.delete(entity: deletedEvent)
                             selectedEvent = nil
                         } else {
                             print("Error deleting selected event")
@@ -74,7 +78,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            HomeView(vm: dev.homeVM)
+            HomeView()
         }
         
     }
@@ -86,12 +90,13 @@ extension HomeView {
     
     private var topIcons: some View {
         HStack {
-            Image(systemName: "exclamationmark.square")
+            Image(systemName: "person.text.rectangle")
                 .foregroundColor(Color.theme.accent)
                 .onTapGesture {
                     showContactSheet.toggle()
                 }
             Spacer()
+            
             Image(systemName: "plus.square")
                 .foregroundColor(Color.theme.accent)
                 .onTapGesture {
@@ -103,18 +108,7 @@ extension HomeView {
         .padding(.bottom)
 
     }
-    
-    // Weather view with a 5 day outlook will need to be built
-    private var weatherView: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .frame(height: 100)
-            .foregroundColor(Color.theme.dark)
-            .overlay(Text("This is the weather view"))
-            .font(.largeTitle)
-            .foregroundColor(.white)
-            .padding(.horizontal, 8)
-            
-    }
+
     
     private var eventGrid: some View {
         LazyVGrid(
@@ -123,9 +117,9 @@ extension HomeView {
             spacing: 20,
             pinnedViews: []) {
                 ForEach(vm.events) { item in
-                    EventTileView(item: item, vm: vm, selectedEvent:$selectedEvent, showAllDetails: showAllDetails )
+                    EventTileView(item: item, vm: vm, selectedEvent: $selectedEvent)
                 }
-                .padding(.leading, 8)
+                .padding(.horizontal, 8)
                 .padding(.top)
             }
     }
@@ -138,37 +132,60 @@ extension HomeView {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
             
-            HStack {
-                Button {
-                    if selectedEvent != nil {
-                        showEditSheet.toggle()
-                    }
-                } label: {
-                    Text("Edit")
-                }
-                .buttonStyle(BorderedProminentButtonStyle())
-                .tint(selectedEvent != nil ? .blue : .gray)
-                .sheet(isPresented: $showEditSheet) {
-                    EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
-                        .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
-                }
-                
-
-                Spacer()
-                
-                    Button {
-                        if selectedEvent != nil {
-                            showAlert.toggle()
+                    HStack {
+                        Button {
+                            if selectedEvent != nil {
+                                showEditSheet.toggle()
+                            }
+                        } label: {
+                            Text("Edit")
                         }
-                    } label: {
-                        Text("DELETE")
-                    }
-                    .buttonStyle(BorderedProminentButtonStyle())
-                    .tint(selectedEvent != nil ? .red : .gray)
-                }
+                        
+                        .buttonStyle(BorderedProminentButtonStyle())
+                        .tint(selectedEvent != nil ? .theme.accent.opacity(0.75) : .gray)
+                        .sheet(isPresented: $showEditSheet) {
+                            EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
+                                .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
+                        }
+                        Spacer()
+                        
+                            Button {
+                                if selectedEvent != nil {
+                                    showAlert.toggle()
+                                }
+                            } label: {
+                                Text("DELETE")
+                            }
+                            .buttonStyle(BorderedProminentButtonStyle())
+                            .tint(selectedEvent != nil ? .red.opacity(0.85) : .gray)
+                        }
+                        .padding(.horizontal)
+                        
                 
-            .padding(.horizontal)
+            
             
         }
+    }
+    private var welcomeBubble: some View {
+        HStack(alignment: .center) {
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color.white)
+                .shadow(color: .black, radius: shadowAnimation ? 14 : 10)
+                .overlay(
+                Text("Welcome to DogDays! Click the plus icon in the top right corner to add your first event and get started!")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                )
+                .frame(width: 300, height: 175)
+                
+                
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                shadowAnimation = true
+            }
+        }
+        
+        .frame(maxWidth: .infinity)
     }
 }

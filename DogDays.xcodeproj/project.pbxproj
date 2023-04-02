@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0225118629CA1713009B9AD9 /* EventTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225118529CA1713009B9AD9 /* EventTileView.swift */; };
-		0225118929CA6389009B9AD9 /* EventData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0225118729CA6389009B9AD9 /* EventData.xcdatamodeld */; };
-		0225118B29CA64F6009B9AD9 /* EventsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225118A29CA64F6009B9AD9 /* EventsDataService.swift */; };
+		0233725A29CF8ECE005D3C80 /* EventContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0233725829CF8ECE005D3C80 /* EventContainer.xcdatamodeld */; };
+		0233725C29D34F7E005D3C80 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0233725B29D34F7E005D3C80 /* NotificationManager.swift */; };
+		0233727029D619D3005D3C80 /* ContactContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0233726E29D619D3005D3C80 /* ContactContainer.xcdatamodeld */; };
 		0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B0F729B9272200C7D2AB /* DogDaysApp.swift */; };
 		0241B0FC29B9272400C7D2AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FB29B9272400C7D2AB /* Assets.xcassets */; };
 		0241B0FF29B9272400C7D2AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0241B0FE29B9272400C7D2AB /* Preview Assets.xcassets */; };
@@ -24,13 +25,17 @@
 		0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12629C0BC0300C7D2AB /* ContactsView.swift */; };
 		0241B12929C0C27D00C7D2AB /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12829C0C27D00C7D2AB /* AddContactView.swift */; };
 		02755B3529C8F656001F6593 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02755B3429C8F656001F6593 /* EditEventView.swift */; };
+		02BA707E29D9B8CC00394B40 /* ContactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA707D29D9B8CC00394B40 /* ContactCardView.swift */; };
+		02BA708029D9CA1F00394B40 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA707F29D9CA1F00394B40 /* HapticManager.swift */; };
+		02BA708329D9D4CC00394B40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02BA708229D9D4CC00394B40 /* LaunchScreen.storyboard */; };
 		02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5FB7429C0FD2600A0BB1E /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0225118529CA1713009B9AD9 /* EventTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTileView.swift; sourceTree = "<group>"; };
-		0225118829CA6389009B9AD9 /* EventData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventData.xcdatamodel; sourceTree = "<group>"; };
-		0225118A29CA64F6009B9AD9 /* EventsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDataService.swift; sourceTree = "<group>"; };
+		0233725929CF8ECE005D3C80 /* EventContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventContainer.xcdatamodel; sourceTree = "<group>"; };
+		0233725B29D34F7E005D3C80 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		0233726F29D619D3005D3C80 /* ContactContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContactContainer.xcdatamodel; sourceTree = "<group>"; };
 		0241B0F429B9272200C7D2AB /* DogDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0241B0F729B9272200C7D2AB /* DogDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDaysApp.swift; sourceTree = "<group>"; };
 		0241B0FB29B9272400C7D2AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,6 +51,9 @@
 		0241B12629C0BC0300C7D2AB /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		0241B12829C0C27D00C7D2AB /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 		02755B3429C8F656001F6593 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
+		02BA707D29D9B8CC00394B40 /* ContactCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCardView.swift; sourceTree = "<group>"; };
+		02BA707F29D9CA1F00394B40 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		02BA708229D9D4CC00394B40 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02C5FB7429C0FD2600A0BB1E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +111,8 @@
 			children = (
 				0241B10829B928D300C7D2AB /* Event.swift */,
 				0241B11E29C0B8C700C7D2AB /* ContactModel.swift */,
-				0225118729CA6389009B9AD9 /* EventData.xcdatamodeld */,
+				0233725829CF8ECE005D3C80 /* EventContainer.xcdatamodeld */,
+				0233726E29D619D3005D3C80 /* ContactContainer.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -111,6 +120,7 @@
 		0241B10629B928A000C7D2AB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				02BA708129D9D4B600394B40 /* LaunchScreen */,
 				0241B12129C0B9C900C7D2AB /* Contact */,
 				0241B11329BBE3A700C7D2AB /* ViewModels */,
 				0241B10B29B92B7100C7D2AB /* Views */,
@@ -121,7 +131,8 @@
 		0241B10729B928BA00C7D2AB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				0225118A29CA64F6009B9AD9 /* EventsDataService.swift */,
+				0233725B29D34F7E005D3C80 /* NotificationManager.swift */,
+				02BA707F29D9CA1F00394B40 /* HapticManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 			children = (
 				0241B12629C0BC0300C7D2AB /* ContactsView.swift */,
 				0241B12829C0C27D00C7D2AB /* AddContactView.swift */,
+				02BA707D29D9B8CC00394B40 /* ContactCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +191,14 @@
 				0241B12429C0BA0000C7D2AB /* ContactViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		02BA708129D9D4B600394B40 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				02BA708229D9D4CC00394B40 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02BA708329D9D4CC00394B40 /* LaunchScreen.storyboard in Resources */,
 				0241B0FF29B9272400C7D2AB /* Preview Assets.xcassets in Resources */,
 				0241B0FC29B9272400C7D2AB /* Assets.xcassets in Resources */,
 			);
@@ -253,20 +274,23 @@
 			files = (
 				0241B10D29B92B8400C7D2AB /* HomeView.swift in Sources */,
 				0241B12529C0BA0000C7D2AB /* ContactViewModel.swift in Sources */,
-				0225118B29CA64F6009B9AD9 /* EventsDataService.swift in Sources */,
 				0241B11529BBE3C100C7D2AB /* AddEventView.swift in Sources */,
 				0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */,
 				02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */,
 				0241B11029B92C6500C7D2AB /* Color.swift in Sources */,
+				02BA708029D9CA1F00394B40 /* HapticManager.swift in Sources */,
+				0233725C29D34F7E005D3C80 /* NotificationManager.swift in Sources */,
 				02755B3529C8F656001F6593 /* EditEventView.swift in Sources */,
+				0233725A29CF8ECE005D3C80 /* EventContainer.xcdatamodeld in Sources */,
+				02BA707E29D9B8CC00394B40 /* ContactCardView.swift in Sources */,
 				0241B10929B928D300C7D2AB /* Event.swift in Sources */,
 				0241B11229B93CF600C7D2AB /* HomeViewModel.swift in Sources */,
 				0241B11929BD2A2F00C7D2AB /* PreviewProvider.swift in Sources */,
 				0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */,
 				0225118629CA1713009B9AD9 /* EventTileView.swift in Sources */,
 				0241B11F29C0B8C800C7D2AB /* ContactModel.swift in Sources */,
-				0225118929CA6389009B9AD9 /* EventData.xcdatamodeld in Sources */,
 				0241B12929C0C27D00C7D2AB /* AddContactView.swift in Sources */,
+				0233727029D619D3005D3C80 /* ContactContainer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,8 +425,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -410,9 +435,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AaronWilson.DogDays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -430,8 +458,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -439,9 +468,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AaronWilson.DogDays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -469,13 +501,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0225118729CA6389009B9AD9 /* EventData.xcdatamodeld */ = {
+		0233725829CF8ECE005D3C80 /* EventContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				0225118829CA6389009B9AD9 /* EventData.xcdatamodel */,
+				0233725929CF8ECE005D3C80 /* EventContainer.xcdatamodel */,
 			);
-			currentVersion = 0225118829CA6389009B9AD9 /* EventData.xcdatamodel */;
-			path = EventData.xcdatamodeld;
+			currentVersion = 0233725929CF8ECE005D3C80 /* EventContainer.xcdatamodel */;
+			path = EventContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		0233726E29D619D3005D3C80 /* ContactContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0233726F29D619D3005D3C80 /* ContactContainer.xcdatamodel */,
+			);
+			currentVersion = 0233726F29D619D3005D3C80 /* ContactContainer.xcdatamodel */;
+			path = ContactContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

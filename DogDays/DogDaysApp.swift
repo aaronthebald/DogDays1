@@ -8,19 +8,17 @@
 import SwiftUI
 
 @main
-
-
-
 struct DogDaysApp: App {
-    
+
+    @StateObject private var vm = HomeViewModel()
     
     
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                HomeView(vm: HomeViewModel())
+                HomeView()
             }
-            
+            .environmentObject(vm)            
         }
     }
 }

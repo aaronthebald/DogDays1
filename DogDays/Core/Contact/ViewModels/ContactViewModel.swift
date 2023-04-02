@@ -6,26 +6,65 @@
 //
 
 import Foundation
+import CoreData
 
 class ContactViewModel: ObservableObject {
     
-    @Published var Contacts: [ContactModel] = []
+    @Published var contacts: [ContactEntity] = []
+    
+    private let container: NSPersistentContainer
+    private let containerName: String = "ContactContainer"
+    private let entityName: String = "ContactEntity"
+    
     
     init() {
-        let testContact1 = ContactModel(name: "Aaron", address: "1030 Chapel Road", phone: "803-422-0348", category: "Owner", id: UUID().uuidString)
+        container = NSPersistentContainer(name: containerName)
+        container.loadPersistentStores { _, error in
+            if let error = error {
+                print("Error loading CoreData \(error)")
+            }
+            self.getContacts()
+        }
         
-        Contacts.append(testContact1)
+    }
+    
+    private func getContacts() {
+        let request = NSFetchRequest<ContactEntity>(entityName: entityName)
+        do {
+            contacts = try container.viewContext.fetch(request)
+        } catch let error {
+            print("Error catching from CoreData \(error)")
+        }
     }
     
     func saveContact(name: String, address: String, phone: String, category: String, id: String) {
         
         let newContact = ContactModel(name: name, address: address, phone: phone, category: category, id: id)
+        let entity = ContactEntity(context: container.viewContext)
+            entity.name = newContact.name
+            entity.address = newContact.address
+            entity.phone = newContact.phone
+            entity.category = newContact.category
+            entity.id = newContact.id
+            applyChanges()
         
-        Contacts.append(newContact)
     }
    
-    func deleteContact(indexSet: IndexSet) {
-        Contacts.remove(atOffsets: indexSet)
+    func deleteContact(deletedEntity: ContactEntity) {
+        container.viewContext.delete(deletedEntity)
+        applyChanges()
     }
     
+    private func save() {
+        do {
+            try container.viewContext.save()
+        } catch let error {
+            print("Error saving to CoreData \(error)")
+        }
+    }
+    
+    private func applyChanges() {
+        save()
+        getContacts()
+    }
 }

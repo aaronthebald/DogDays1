@@ -9,14 +9,12 @@ import SwiftUI
 
 struct EventTileView: View {
     
-    let item: Event
+    let item: EventEntity
     @ObservedObject var vm: HomeViewModel
     
-    @Binding var selectedEvent: Event?
-    @State var animate: Bool = false
-    @State var buttonTitle: String = ""
-    @State var showAllDetails: Bool
     
+    @Binding var selectedEvent: EventEntity?
+    @State var buttonTitle: String = ""
     @State var backgroundColor: Color = Color.white
     
     
@@ -25,47 +23,45 @@ struct EventTileView: View {
         
         ZStack {
             backgroundColor.animation(.none)
-            VStack {
-                Image(systemName: vm.getImage(event: item))
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                    Text(item.title)
-                            .font(.title2)
-                            .lineLimit(1)
-                    Text(item.location)
-                            .font(.title2)
-                            .lineLimit(1)
+            VStack( alignment: .leading) {
+                HStack {
                     Spacer()
-                    if showAllDetails {
-                        withAnimation {
-                            Text(item.date.formatted(date: .abbreviated, time: .shortened))
-                                    .font(.title2)
-                                    .padding(.horizontal, 4)
-                            }
+                    Image(systemName: vm.getImage(event: item))
+                                .resizable()
+                            .frame(width: 40, height: 40)
+                }
+                Text(item.title ?? "")
+                            //.font(.headline)
+//                            .lineLimit(1)
+//                            .scaledToFit()
+                Text(item.location ?? "")
+//                            .font(.headline)
+//                            .lineLimit(1)
+                Text(item.date?.formatted(date: .abbreviated, time: .omitted) ?? "")
+//                    .multilineTextAlignment(.leading)
+//                    .font(.headline)
+                Text(item.date?.formatted(date: .omitted, time: .shortened) ?? "")
+//                    .multilineTextAlignment(.leading)
+//                    .font(.headline)
+                            
                             Spacer()
-                        }
+                        
                     }
-                
+                    .padding()
                     .padding(.top, 8)
                 }
-                    .overlay(alignment: .topTrailing) {
-                        if selectedEvent != nil {
+               // .frame(width: 175, height: 160)
+                .overlay(alignment: .topLeading) {
+                        if selectedEvent == item{
                             overlay
                             }
                         }
-                    .rotationEffect(.degrees(animate ? 2.5 : 0))
-                    .animation(animate ? .easeInOut(duration: 0.15).repeatForever(autoreverses: true) : .easeInOut(duration: 0.15), value: animate)
-                    .onTapGesture {
-                        withAnimation {
-                            showAllDetails.toggle()
-                            }
-                        }
-                    .onLongPressGesture(perform: {
+                .onLongPressGesture(perform: {
+                    HapticManager.instance.notification(type: .success)
                         buttonTitle = "checkmark.circle"
                         selectedEvent = item
-                        animate = true
                         })
-                    .cornerRadius(10)
+                    .cornerRadius(15)
                     .shadow(color: .black.opacity(0.3), radius: 10)
         
         }
@@ -74,10 +70,10 @@ struct EventTileView: View {
 extension EventTileView {
     private var overlay: some View {
         Button {
-            animate.toggle()
             selectedEvent = nil
        } label: {
            Image(systemName: buttonTitle)
+               .foregroundColor(Color.theme.accent)
                .font(.largeTitle)
        }
 

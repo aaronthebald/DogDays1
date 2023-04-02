@@ -11,14 +11,29 @@ struct ContactsView: View {
     
     @StateObject private var vm: ContactViewModel = ContactViewModel()
     
+    @State var buttonTitle: String = ""
+    @State private var shadowAnimation: Bool = false
+    @State private var showAlert: Bool = false
+     var alertTitle: String = "Delete Contact?"
     @State var showAddContactView: Bool = false
+    @State var selectedContact: ContactEntity? = nil
     @Binding var showContactSheet: Bool
+    
     
     var body: some View {
         NavigationStack() {
-            List {
-                contactCard
-                
+            if vm.contacts.isEmpty {
+                VStack {
+                    Spacer(minLength: 100)
+                    contactBubble
+                        .frame(maxHeight: .infinity)
+                }
+            }
+            VStack {
+                ForEach(vm.contacts) { contact in
+                    ContactCardView(contact: contact, vm: vm, selectedContact: $selectedContact)
+                }
+                    Spacer()
             }
             .navigationTitle("Contacts")
 
@@ -32,6 +47,16 @@ struct ContactsView: View {
                     }
 
                 }
+                if selectedContact != nil {
+                    ToolbarItem(placement: .destructiveAction) {
+                        Button {
+                            showAlert = true
+                        } label: {
+                            Text("Delete")
+                        }
+
+                    }
+                }
                 
                 ToolbarItem(placement:.navigationBarTrailing) {
                     Button {
@@ -41,7 +66,26 @@ struct ContactsView: View {
                     }
         }
       }
+            .tint(Color.theme.accent)
     }
+
+        .alert(alertTitle, isPresented: $showAlert, actions: {
+            if let selectedContact = selectedContact {
+                HStack {
+                    Button {
+                        showAlert = false
+                    } label: {
+                        Text("Dismiss")
+                    }
+                    Button {
+                        vm.deleteContact(deletedEntity: selectedContact)
+                    } label: {
+                        Text("DELETE")
+                    }
+                }
+            }
+        }
+        )
         .sheet(isPresented: $showAddContactView) {
             AddContactView(vm: vm, showAddContactView: $showAddContactView)
                 .presentationDetents([.medium]).presentationDragIndicator(.visible)
@@ -56,40 +100,19 @@ struct ContactsView_Previews: PreviewProvider {
 }
 
 extension ContactsView {
-    
-    private var contactCard: some View {
-        ForEach(vm.Contacts) { contact in
-            VStack(spacing: 5) {
-                HStack {
-                    Text("Name:")
-                    Spacer()
-                    Text(contact.name)
-                }
-                Divider()
-                HStack {
-                    Text("Category:")
-                    Spacer()
-                    Text(contact.category)
-                }
-                Divider()
-                if contact.address.isEmpty {
-                    EmptyView()
-                } else {
-                    HStack {
-                    Text("Address:")
-                    Spacer()
-                    Text(contact.address)
-                }}
-                
-                Divider()
-                HStack {
-                    Text("Phone Number:")
-                    Spacer()
-                    
-                    Text(contact.phone.formatPhoneNumber())
-                }
-            }
+    private var contactBubble: some View {
+        HStack() {
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color.white)
+                .shadow(color: .black, radius: 14)
+                .overlay(
+                Text("On this screen you can keep up with important Contacts for your pup! Press the plus button to get started!")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                )
+                .frame(width: 300, height: 175)
         }
-        .onDelete(perform: vm.deleteContact)
+        .frame(maxWidth: .infinity)
     }
+
 }
