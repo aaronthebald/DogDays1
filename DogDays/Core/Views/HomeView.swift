@@ -13,12 +13,10 @@ struct HomeView: View {
     @State var showAddSheet: Bool = false
     @State var showContactSheet: Bool = false
     @State private var showEditSheet: Bool = false
-    @State var showAllDetails: Bool = false
     @State var selectedEvent: EventEntity? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
     @State var shadowAnimation: Bool = false
-    @State var showButtons: Bool = false
     let columns: [GridItem] = [
         GridItem(.flexible(), alignment: .top),
         GridItem(.flexible(), alignment: .top)
@@ -98,6 +96,7 @@ extension HomeView {
                     showContactSheet.toggle()
                 }
             Spacer()
+            
             Image(systemName: "plus.square")
                 .foregroundColor(Color.theme.accent)
                 .onTapGesture {
@@ -109,18 +108,7 @@ extension HomeView {
         .padding(.bottom)
 
     }
-    
-    // Weather view with a 5 day outlook will need to be built
-    private var weatherView: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .frame(height: 100)
-            .foregroundColor(Color.theme.dark)
-            .overlay(Text("This is the weather view"))
-            .font(.largeTitle)
-            .foregroundColor(.white)
-            .padding(.horizontal, 8)
-            
-    }
+
     
     private var eventGrid: some View {
         LazyVGrid(
@@ -129,7 +117,7 @@ extension HomeView {
             spacing: 20,
             pinnedViews: []) {
                 ForEach(vm.events) { item in
-                    EventTileView(item: item, vm: vm, selectedEvent: $selectedEvent, showAllDetails: showAllDetails )
+                    EventTileView(item: item, vm: vm, selectedEvent: $selectedEvent)
                 }
                 .padding(.horizontal, 8)
                 .padding(.top)

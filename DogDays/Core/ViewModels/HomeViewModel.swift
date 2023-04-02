@@ -15,9 +15,7 @@ class HomeViewModel: ObservableObject {
     @Published var events: [EventEntity] = []
     @Published var imageName: String = ""
     @Published var sortedEvents: [EventEntity] = []
-    @Published var animate: Bool = false
     
-    private var cancellables = Set<AnyCancellable>()
     
     private let container: NSPersistentContainer
     private let containerName: String = "EventContainer"
@@ -132,7 +130,8 @@ class HomeViewModel: ObservableObject {
     }
     
     func sortEvents() {
-            sortedEvents = events.sorted(by: {$0.date?.timeIntervalSinceNow ?? .zero < $1.date?.timeIntervalSinceNow ?? .zero})
+            events = events.sorted(by: {$0.date?.timeIntervalSinceNow ?? .zero < $1.date?.timeIntervalSinceNow ?? .zero})
+            
     }
     
 }

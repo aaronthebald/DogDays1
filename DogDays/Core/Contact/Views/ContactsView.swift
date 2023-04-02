@@ -30,13 +30,9 @@ struct ContactsView: View {
                 }
             }
             VStack {
-                
                 ForEach(vm.contacts) { contact in
                     ContactCardView(contact: contact, vm: vm, selectedContact: $selectedContact)
-                    
                 }
-                
-                        
                     Spacer()
             }
             .navigationTitle("Contacts")
@@ -104,64 +100,6 @@ struct ContactsView_Previews: PreviewProvider {
 }
 
 extension ContactsView {
-    
-//    private var contactCard: some View {
-//        ForEach(vm.contacts) { contact in
-//            VStack(spacing: 5) {
-//
-//                HStack {
-//                    Text("Name:")
-//                    Spacer()
-//                    Text(contact.name ?? "Failed to load Contact")
-//                }
-//                Divider()
-//                HStack {
-//                    Text("Category:")
-//                    Spacer()
-//                    Text(contact.category ?? "Failed to load Contact")
-//                }
-//
-//                if ((contact.address?.isEmpty) != nil) {
-//                    EmptyView()
-//                } else {
-//                    Divider()
-//                    HStack {
-//                        Text("Address:")
-//                        Spacer()
-//                        Text(contact.address ?? "Failed to load Contact")
-//                    }}
-//
-//                Divider()
-//                HStack {
-//                    Text("Phone Number:")
-//                    Spacer()
-//
-//                    Text(contact.phone?.formatPhoneNumber() ?? "Failed to load Contact")
-//                }
-//            }
-//            .overlay(alignment: .topTrailing, content: {
-//                if selectedContact != nil {
-//                    overlay
-//                }
-//            })
-//            .padding()
-//            .background(Color.white)
-//            .cornerRadius(15)
-//            .padding()
-//            .shadow(color: .black.opacity(0.25), radius: 10)
-//            .frame(maxWidth: .infinity)
-//
-//
-//            .onLongPressGesture(perform: {
-//                buttonTitle = "checkmark.circle"
-//                selectedContact = contact
-//                alertTitle = "Delete Contact?"
-//            })
-//        }
-//
-//    }
-    
-    
     private var contactBubble: some View {
         HStack() {
             RoundedRectangle(cornerRadius: 25)
@@ -173,21 +111,8 @@ extension ContactsView {
                     .multilineTextAlignment(.center)
                 )
                 .frame(width: 300, height: 175)
-                
-                
         }
-        
-        
         .frame(maxWidth: .infinity)
     }
-    
-//    private var overlay: some View {
-//        Button {
-//            selectedContact = nil
-//       } label: {
-//           Image(systemName: "checkmark.circle")
-//               .font(.largeTitle)
-//       }
-//
-//    }
+
 }

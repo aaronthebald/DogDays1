@@ -15,7 +15,6 @@ struct EventTileView: View {
     
     @Binding var selectedEvent: EventEntity?
     @State var buttonTitle: String = ""
-    @State var showAllDetails: Bool
     @State var backgroundColor: Color = Color.white
     
     

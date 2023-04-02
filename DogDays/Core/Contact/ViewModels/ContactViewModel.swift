@@ -25,6 +25,7 @@ class ContactViewModel: ObservableObject {
             }
             self.getContacts()
         }
+        
     }
     
     private func getContacts() {
