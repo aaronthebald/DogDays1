@@ -14,7 +14,6 @@ struct EventTileView: View {
     
     
     @Binding var selectedEvent: EventEntity?
-    @State var animate: Bool = false
     @State var buttonTitle: String = ""
     @State var showAllDetails: Bool
     @State var backgroundColor: Color = Color.white
@@ -59,9 +58,9 @@ struct EventTileView: View {
                             }
                         }
                 .onLongPressGesture(perform: {
+                    HapticManager.instance.notification(type: .success)
                         buttonTitle = "checkmark.circle"
                         selectedEvent = item
-                        animate = true
                         })
                     .cornerRadius(15)
                     .shadow(color: .black.opacity(0.3), radius: 10)
@@ -72,10 +71,10 @@ struct EventTileView: View {
 extension EventTileView {
     private var overlay: some View {
         Button {
-            animate = false
             selectedEvent = nil
        } label: {
            Image(systemName: buttonTitle)
+               .foregroundColor(Color.theme.accent)
                .font(.largeTitle)
        }
 

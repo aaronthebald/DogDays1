@@ -39,6 +39,7 @@ struct AddContactView: View {
                             Text("Save")
                         }
                         .buttonStyle(BorderedProminentButtonStyle())
+                        .tint(Color.theme.accent)
 
                     }
                 }

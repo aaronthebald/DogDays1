@@ -119,6 +119,7 @@ extension AddEventView {
                 Text("Save")
             }
             .buttonStyle(BorderedProminentButtonStyle())
+            .tint(Color.theme.accent)
         }
     }
     

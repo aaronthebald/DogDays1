@@ -92,7 +92,7 @@ extension HomeView {
     
     private var topIcons: some View {
         HStack {
-            Image(systemName: "exclamationmark.square")
+            Image(systemName: "person.text.rectangle")
                 .foregroundColor(Color.theme.accent)
                 .onTapGesture {
                     showContactSheet.toggle()
@@ -154,7 +154,7 @@ extension HomeView {
                         }
                         
                         .buttonStyle(BorderedProminentButtonStyle())
-                        .tint(selectedEvent != nil ? .blue.opacity(0.75) : .gray)
+                        .tint(selectedEvent != nil ? .theme.accent.opacity(0.75) : .gray)
                         .sheet(isPresented: $showEditSheet) {
                             EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
                                 .presentationDetents([.height(330)]).presentationDragIndicator(.visible)

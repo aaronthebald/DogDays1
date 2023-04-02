@@ -25,6 +25,8 @@
 		0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12629C0BC0300C7D2AB /* ContactsView.swift */; };
 		0241B12929C0C27D00C7D2AB /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241B12829C0C27D00C7D2AB /* AddContactView.swift */; };
 		02755B3529C8F656001F6593 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02755B3429C8F656001F6593 /* EditEventView.swift */; };
+		02BA707E29D9B8CC00394B40 /* ContactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA707D29D9B8CC00394B40 /* ContactCardView.swift */; };
+		02BA708029D9CA1F00394B40 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA707F29D9CA1F00394B40 /* HapticManager.swift */; };
 		02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5FB7429C0FD2600A0BB1E /* String.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		0241B12629C0BC0300C7D2AB /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		0241B12829C0C27D00C7D2AB /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 		02755B3429C8F656001F6593 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
+		02BA707D29D9B8CC00394B40 /* ContactCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCardView.swift; sourceTree = "<group>"; };
+		02BA707F29D9CA1F00394B40 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		02C5FB7429C0FD2600A0BB1E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				0233725B29D34F7E005D3C80 /* NotificationManager.swift */,
+				02BA707F29D9CA1F00394B40 /* HapticManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 			children = (
 				0241B12629C0BC0300C7D2AB /* ContactsView.swift */,
 				0241B12829C0C27D00C7D2AB /* AddContactView.swift */,
+				02BA707D29D9B8CC00394B40 /* ContactCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,9 +266,11 @@
 				0241B12729C0BC0300C7D2AB /* ContactsView.swift in Sources */,
 				02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */,
 				0241B11029B92C6500C7D2AB /* Color.swift in Sources */,
+				02BA708029D9CA1F00394B40 /* HapticManager.swift in Sources */,
 				0233725C29D34F7E005D3C80 /* NotificationManager.swift in Sources */,
 				02755B3529C8F656001F6593 /* EditEventView.swift in Sources */,
 				0233725A29CF8ECE005D3C80 /* EventContainer.xcdatamodeld in Sources */,
+				02BA707E29D9B8CC00394B40 /* ContactCardView.swift in Sources */,
 				0241B10929B928D300C7D2AB /* Event.swift in Sources */,
 				0241B11229B93CF600C7D2AB /* HomeViewModel.swift in Sources */,
 				0241B11929BD2A2F00C7D2AB /* PreviewProvider.swift in Sources */,
