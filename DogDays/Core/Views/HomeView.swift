@@ -21,6 +21,7 @@ struct HomeView: View {
         GridItem(.flexible(), alignment: .top),
         GridItem(.flexible(), alignment: .top)
 ]
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         
@@ -169,8 +170,8 @@ extension HomeView {
     private var welcomeBubble: some View {
         HStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 25)
-                .background()
-                .shadow(color: .black, radius: shadowAnimation ? 14 : 10)
+                .fill(colorScheme == .light ? Color.white : Color.black)
+                .shadow(color: colorScheme == .light ? .black : .white, radius: shadowAnimation ? 14 : 10)
                 .overlay(
                 Text("Welcome to DogDays! Click the plus icon in the top right corner to add your first event and get started!")
                     .font(.headline)

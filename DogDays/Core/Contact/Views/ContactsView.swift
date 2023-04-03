@@ -18,7 +18,7 @@ struct ContactsView: View {
     @State var showAddContactView: Bool = false
     @State var selectedContact: ContactEntity? = nil
     @Binding var showContactSheet: Bool
-    
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         NavigationStack() {
@@ -103,14 +103,14 @@ extension ContactsView {
     private var contactBubble: some View {
         HStack() {
             RoundedRectangle(cornerRadius: 25)
-                .fill(Color.white)
-                .shadow(color: .black, radius: 14)
+                .fill(colorScheme == .light ? Color.white : Color.black)
+                .shadow(color: colorScheme == .light ? .black : .white, radius: 14)
                 .overlay(
                 Text("On this screen you can keep up with important Contacts for your pup! Press the plus button to get started!")
                     .font(.headline)
                     .multilineTextAlignment(.center)
                 )
-                .frame(width: 300, height: 175)
+                .frame(width: 350, height: 200)
         }
         .frame(maxWidth: .infinity)
     }

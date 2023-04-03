@@ -81,7 +81,7 @@ extension AddEventView {
                     ForEach(eventTypes, id: \.self) { type in
                         Text("\(type)")
                             .tag(type)
-                        }
+                    }
                 }
             }
 
