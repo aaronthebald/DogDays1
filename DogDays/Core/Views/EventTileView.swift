@@ -11,7 +11,7 @@ struct EventTileView: View {
     
     let item: EventEntity
     @ObservedObject var vm: HomeViewModel
-    
+    @Environment(\.colorScheme) var colorScheme
     
     @Binding var selectedEvent: EventEntity?
     @State var buttonTitle: String = ""
@@ -22,13 +22,18 @@ struct EventTileView: View {
     var body: some View {
         
         ZStack {
-            backgroundColor.animation(.none)
+            if colorScheme == .light {
+                Color.white
+            } else {
+                Color.black
+            }
             VStack( alignment: .leading) {
                 HStack {
                     Spacer()
                     Image(systemName: vm.getImage(event: item))
                                 .resizable()
                             .frame(width: 40, height: 40)
+                            .foregroundColor(Color.theme.accent)
                 }
                 Text(item.title ?? "")
                             //.font(.headline)
@@ -62,7 +67,7 @@ struct EventTileView: View {
                         selectedEvent = item
                         })
                     .cornerRadius(15)
-                    .shadow(color: .black.opacity(0.3), radius: 10)
+                    .shadow(color: colorScheme == .light ? .black.opacity(0.3) : .white.opacity(0.3), radius: 15)
         
         }
     }

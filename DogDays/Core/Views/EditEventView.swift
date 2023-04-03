@@ -90,7 +90,7 @@ extension EditEventView {
         .padding()
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(Color.white)
+        .background()
         .cornerRadius(10)
 
         
@@ -120,6 +120,7 @@ extension EditEventView {
                 Text("Save")
             }
             .buttonStyle(BorderedProminentButtonStyle())
+            .tint(Color.theme.accent)
         }
     }
     

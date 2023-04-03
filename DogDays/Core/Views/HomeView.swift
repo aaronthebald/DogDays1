@@ -169,7 +169,7 @@ extension HomeView {
     private var welcomeBubble: some View {
         HStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 25)
-                .fill(Color.white)
+                .background()
                 .shadow(color: .black, radius: shadowAnimation ? 14 : 10)
                 .overlay(
                 Text("Welcome to DogDays! Click the plus icon in the top right corner to add your first event and get started!")

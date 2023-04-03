@@ -13,11 +13,12 @@ struct ContactCardView: View {
     
     let contact: ContactEntity
     @ObservedObject var vm: ContactViewModel
-    
+    @Environment(\.colorScheme) private var colorScheme
     @Binding var selectedContact: ContactEntity?
     
     
     var body: some View {
+        
         VStack(spacing: 5) {
            
             HStack {
@@ -54,7 +55,7 @@ struct ContactCardView: View {
         .frame(height: 85)
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.white)
+        .background()
         .cornerRadius(15)
         .padding()
         .overlay(alignment: .topTrailing) {
@@ -63,7 +64,7 @@ struct ContactCardView: View {
                     
             }
         }
-        .shadow(color: .black.opacity(0.25), radius: 10)
+        .shadow(color: colorScheme == .light ? .black.opacity(0.25) : .white.opacity(0.25), radius: 15)
 
 
         .onLongPressGesture(perform: {

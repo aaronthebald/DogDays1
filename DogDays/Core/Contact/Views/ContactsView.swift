@@ -88,7 +88,7 @@ struct ContactsView: View {
         )
         .sheet(isPresented: $showAddContactView) {
             AddContactView(vm: vm, showAddContactView: $showAddContactView)
-                .presentationDetents([.medium]).presentationDragIndicator(.visible)
+                .presentationDetents([.height(400)]).presentationDragIndicator(.visible)
         }
   }
 }

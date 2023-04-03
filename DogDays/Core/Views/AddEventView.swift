@@ -94,7 +94,7 @@ extension AddEventView {
         .padding()
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(Color.white)
+        .background()
         .cornerRadius(10)
 
         
