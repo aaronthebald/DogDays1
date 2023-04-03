@@ -48,7 +48,8 @@ struct ContactCardView: View {
                 Text("Phone Number:")
                 Spacer()
                 
-                Text(contact.phone?.formatPhoneNumber() ?? "Failed to load Contact")
+                Link(contact.phone?.formatPhoneNumber() ?? "Error loading contact", destination: URL(string: contact.phone!)!)
+                //Text(contact.phone?.formatPhoneNumber() ?? "Failed to load Contact")
             }
         }
         
