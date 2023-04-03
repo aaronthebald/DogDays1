@@ -13,7 +13,7 @@ struct EditEventView: View {
     @Binding var selectedEvent: EventEntity?
     @State var newEventLocation: String = ""
     @State var newEventTitle: String = ""
-    @State var newEventSelection: String = "Test"
+    @State var newEventSelection: String = "Groomer"
     @State var newEventDate: Date = Date()
     @State var newEventNotificationBool: Bool = false
     @State var eventTypes: [String] = [
