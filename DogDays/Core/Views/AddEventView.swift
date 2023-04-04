@@ -71,6 +71,7 @@ extension AddEventView {
             Divider()
             
             TextField("Event Location... ", text: $newEventLocation)
+                
             
             Divider()
             

@@ -15,7 +15,8 @@ struct ContactCardView: View {
     @ObservedObject var vm: ContactViewModel
     @Environment(\.colorScheme) private var colorScheme
     @Binding var selectedContact: ContactEntity?
-    
+    let url = URL(string: "https://www.youtube.com/")
+    let tel = "tel:"
     
     var body: some View {
         
@@ -33,7 +34,7 @@ struct ContactCardView: View {
                 Text(contact.category ?? "Failed to load Contact")
             }
             
-            if ((contact.address?.isEmpty) != nil) {
+            if contact.address == nil {
                 EmptyView()
             } else {
                 Divider()
@@ -48,8 +49,7 @@ struct ContactCardView: View {
                 Text("Phone Number:")
                 Spacer()
                 
-                Link(contact.phone?.formatPhoneNumber() ?? "Error loading contact", destination: URL(string: contact.phone!)!)
-                //Text(contact.phone?.formatPhoneNumber() ?? "Failed to load Contact")
+                Link(contact.phone?.formatPhoneNumber() ?? "Error geting phone number", destination: URL(string: tel + (contact.phone ?? "")) ??  url! )
             }
         }
         
