@@ -12,7 +12,6 @@ struct AddContactView: View {
     @ObservedObject var vm: ContactViewModel
     @State var nameTextFieldText: String = ""
     @State var categoryTextFieldText: String = "Groomer"
-    @State var addressTextFieldText: String = ""
     @State var phoneTextFieldText: String = ""
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
@@ -29,7 +28,6 @@ struct AddContactView: View {
                 List {
                     TextField("Add Name Here...", text: $nameTextFieldText)
                     contactCategoryPicker
-                    TextField("Add Address Here...(Optional)", text: $addressTextFieldText).multilineTextAlignment(.leading)
                     TextField("Add Phone Number Here...", text: $phoneTextFieldText).keyboardType(.numberPad)
                     HStack {
                         Spacer()
@@ -78,7 +76,7 @@ private var contactCategoryPicker: some View {
     // MARK: functions
     func saveButtonPressed() {
         if textIsAppropriate() && phoneNumberisAppropriate() {
-            vm.saveContact(name: nameTextFieldText, address: addressTextFieldText, phone: phoneTextFieldText, category: categoryTextFieldText, id: UUID().uuidString)
+            vm.saveContact(name: nameTextFieldText, phone: phoneTextFieldText, category: categoryTextFieldText, id: UUID().uuidString)
             showAddContactView.toggle()
         }
     }

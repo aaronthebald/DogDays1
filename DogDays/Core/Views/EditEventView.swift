@@ -31,7 +31,7 @@ struct EditEventView: View {
         
         ZStack {
             VStack {
-                newEventTitleView
+                newEventDetailsView
                 saveButton
             }
             .padding()
@@ -55,18 +55,13 @@ struct EditEventView: View {
 //}
 
 extension EditEventView {
-    private var newEventTitleView: some View {
+    private var newEventDetailsView: some View {
         VStack {
             if let selectedEvent = selectedEvent  {
-                
                 TextField(selectedEvent.title ?? "Help me", text: $newEventTitle)
-                
                 Divider()
-                
                 TextField(selectedEvent.location ?? "Help me", text: $newEventLocation)
-                
                 Divider()
-                
                 HStack {
                     Text("Event Type:")
                     Spacer()
@@ -77,15 +72,11 @@ extension EditEventView {
                             }
                     }
                 }
- 
-                
                 Divider()
                 DatePicker("Date", selection: $newEventDate)
                 Divider()
                 Toggle("Schedule Notifcation?", isOn: $newEventNotificationBool)
             }
-           
-
         }
         .padding()
         .frame(maxWidth: .infinity)
@@ -100,21 +91,7 @@ extension EditEventView {
         HStack {
             Spacer()
             Button {
-                
-                if let selectedEvent = selectedEvent {
-                        
-                        print(selectedEvent as Any)
-                        vm.updateEvent(event: returnUpdatedEvent(selectedEvent: selectedEvent))
-                        if newEventNotificationBool == true {
-                        NotificationManager.instance.scheduleNotification(forDate: newEventDate)
-                        }
-                        print("closure ran")
-                        showEditSheet.toggle()
-                        print(vm.events.count)
-                    
-                        
-                }
-                selectedEvent = nil
+                saveButtonPressed()
             }
                 label: {
                 Text("Save")
@@ -187,5 +164,19 @@ extension EditEventView {
         print(updatedEvent)
         return updatedEvent
        
+    }
+    
+    private func saveButtonPressed() {
+        if let selectedEvent = selectedEvent {
+                print(selectedEvent as Any)
+                vm.updateEvent(event: returnUpdatedEvent(selectedEvent: selectedEvent))
+                if newEventNotificationBool == true {
+                NotificationManager.instance.scheduleNotification(forDate: newEventDate)
+                }
+                print("closure ran")
+                showEditSheet.toggle()
+                print(vm.events.count)
+        }
+        selectedEvent = nil
     }
 }

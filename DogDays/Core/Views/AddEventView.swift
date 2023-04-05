@@ -25,16 +25,13 @@ struct AddEventView: View {
     @Binding var showAddSheet: Bool
     
     var body: some View {
-        
         ZStack {
             VStack {
-                newEventTitleView
+                newEventDetailsView
                 saveButton
             }
             .padding()
-            
             .cornerRadius(20)
-            
         }
         .alert(alertTitle, isPresented: $showAlert, actions: {
             HStack {
@@ -43,7 +40,6 @@ struct AddEventView: View {
                 } label: {
                     Text("Dismiss")
                 }
-
             }
         })
         .frame(height: 500)
@@ -63,18 +59,12 @@ struct AddEventView_Previews: PreviewProvider {
 }
 
 extension AddEventView {
-    private var newEventTitleView: some View {
+    private var newEventDetailsView: some View {
         VStack {
-            
             TextField("Event Name... ", text: $newEventTitle)
-            
             Divider()
-            
             TextField("Event Location... ", text: $newEventLocation)
-                
-            
             Divider()
-            
             HStack {
                 Text("Event Type:")
                 Spacer()
@@ -85,12 +75,10 @@ extension AddEventView {
                     }
                 }
             }
-
             Divider()
             DatePicker("Date", selection: $newEventDate)
             Divider()
             Toggle("Schedule Notifcation?", isOn: $newEventNotificationBool)
-
         }
         .padding()
         .frame(maxWidth: .infinity)
@@ -105,17 +93,7 @@ extension AddEventView {
         HStack {
             Spacer()
             Button {
-                
-                if titleIsApproprate() && locationIsApproprate() {
-                    let newEvent = Event(type: newEventSelection, location: newEventLocation, date: newEventDate, title: newEventTitle, notification: newEventNotificationBool, id: UUID().uuidString)
-                    print("Button pressed")
-                    vm.add(event: newEvent)
-                    if newEventNotificationBool == true {
-                        NotificationManager.instance.scheduleNotification(forDate: newEventDate)
-                    }
-                    showAddSheet.toggle()
-                }
-                
+                saveButtonPressed()
             } label: {
                 Text("Save")
             }
@@ -143,6 +121,18 @@ extension AddEventView {
             return false
         } else {
             return true
+        }
+    }
+    
+    private func saveButtonPressed() {
+        if titleIsApproprate() && locationIsApproprate() {
+            let newEvent = Event(type: newEventSelection, location: newEventLocation, date: newEventDate, title: newEventTitle, notification: newEventNotificationBool, id: UUID().uuidString)
+            print("Button pressed")
+            vm.add(event: newEvent)
+            if newEventNotificationBool == true {
+                NotificationManager.instance.scheduleNotification(forDate: newEventDate)
+            }
+            showAddSheet.toggle()
         }
     }
 }

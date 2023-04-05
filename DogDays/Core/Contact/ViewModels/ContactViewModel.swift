@@ -37,12 +37,12 @@ class ContactViewModel: ObservableObject {
         }
     }
     
-    func saveContact(name: String, address: String, phone: String, category: String, id: String) {
+    func saveContact(name: String, phone: String, category: String, id: String) {
         
-        let newContact = ContactModel(name: name, address: address, phone: phone, category: category, id: id)
+        let newContact = ContactModel(name: name, phone: phone, category: category, id: id)
         let entity = ContactEntity(context: container.viewContext)
             entity.name = newContact.name
-            entity.address = newContact.address
+//            entity.address = newContact.address
             entity.phone = newContact.phone
             entity.category = newContact.category
             entity.id = newContact.id

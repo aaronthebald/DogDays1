@@ -10,7 +10,6 @@ import Foundation
 struct ContactModel: Identifiable {
     
     let name: String
-    let address: String
     let phone: String
     let category: String
     let id: String

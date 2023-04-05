@@ -29,13 +29,15 @@ struct HomeView: View {
                 ScrollView {
                     topIcons
                     VStack(alignment: .leading) {
-                        
                        upccomingEventsHeader
+                        
                         if vm.events.isEmpty {
                             Spacer(minLength: 100)
                             welcomeBubble
                         }
+                        
                         eventGrid
+                        
                     }
                     .sheet(isPresented: $showAddSheet) {
                         AddEventView(vm: vm, showAddSheet: $showAddSheet)
@@ -47,31 +49,10 @@ struct HomeView: View {
                 NotificationManager.instance.requestAuthorization()
             }
         			
-            .alert("Are you sure?", isPresented: $showAlert, actions: {
-                HStack {
-                    Button {
-                        selectedEvent = nil
-                        showAlert.toggle()
-                    } label: {
-                        Text("Cancel")
-                    }
-
-                    Button {
-                        if let deletedEvent = selectedEvent {
-                            vm.delete(entity: deletedEvent)
-                            selectedEvent = nil
-                        } else {
-                            print("Error deleting selected event")
-                        }
-                    } label: {
-                        Text("DELETE")
-                }
-                }
-
-            })
+            .alert("Are you sure?", isPresented: $showAlert, actions: {alertView})
             .sheet(isPresented: $showContactSheet) {
                 ContactsView(showContactSheet: $showContactSheet)
-            }
+      }
     }
   }
 
@@ -81,13 +62,10 @@ struct HomeView_Previews: PreviewProvider {
         NavigationStack {
             HomeView()
         }
-        
     }
 }
 
 extension HomeView {
-    
-    
     
     private var topIcons: some View {
         HStack {
@@ -132,41 +110,11 @@ extension HomeView {
                 .bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
-            
-                    HStack {
-                        Button {
-                            if selectedEvent != nil {
-                                showEditSheet.toggle()
-                            }
-                        } label: {
-                            Text("Edit")
-                        }
-                        
-                        .buttonStyle(BorderedProminentButtonStyle())
-                        .tint(selectedEvent != nil ? .theme.accent.opacity(0.75) : .gray)
-                        .sheet(isPresented: $showEditSheet) {
-                            EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
-                                .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
-                        }
-                        Spacer()
-                        
-                            Button {
-                                if selectedEvent != nil {
-                                    showAlert.toggle()
-                                }
-                            } label: {
-                                Text("DELETE")
-                            }
-                            .buttonStyle(BorderedProminentButtonStyle())
-                            .tint(selectedEvent != nil ? .red.opacity(0.85) : .gray)
-                        }
-                        .padding(.horizontal)
-                        
-                
-            
-            
+                editDeleteButtons
+                .padding(.horizontal)
         }
     }
+    
     private var welcomeBubble: some View {
         HStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 25)
@@ -186,7 +134,56 @@ extension HomeView {
                 shadowAnimation = true
             }
         }
-        
         .frame(maxWidth: .infinity)
+    }
+    
+    private var alertView: some View {
+        HStack {
+            Button {
+                selectedEvent = nil
+                showAlert.toggle()
+            } label: {
+                Text("Cancel")
+            }
+            Button {
+                if let deletedEvent = selectedEvent {
+                    vm.delete(entity: deletedEvent)
+                    selectedEvent = nil
+                } else {
+                    print("Error deleting selected event")
+                }
+            } label: {
+                Text("DELETE")
+        }
+        }
+    }
+    
+    private var editDeleteButtons: some View {
+        HStack {
+            Button {
+                if selectedEvent != nil {
+                    showEditSheet.toggle()
+                }
+            } label: {
+                Text("Edit")
+                }
+                
+            .buttonStyle(BorderedProminentButtonStyle())
+            .tint(selectedEvent != nil ? .theme.accent.opacity(0.75) : .gray)
+            .sheet(isPresented: $showEditSheet) {
+                EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
+                    .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
+                }
+                Spacer()
+                Button {
+                        if selectedEvent != nil {
+                            showAlert.toggle()
+                        }
+                    } label: {
+                        Text("DELETE")
+                    }
+                    .buttonStyle(BorderedProminentButtonStyle())
+                    .tint(selectedEvent != nil ? .red.opacity(0.85) : .gray)
+                }
     }
 }

@@ -33,17 +33,6 @@ struct ContactCardView: View {
                 Spacer()
                 Text(contact.category ?? "Failed to load Contact")
             }
-            
-            if contact.address == nil {
-                EmptyView()
-            } else {
-                Divider()
-                HStack {
-                    Text("Address:")
-                    Spacer()
-                    Text(contact.address ?? "Failed to load Contact")
-                }}
-            
             Divider()
             HStack {
                 Text("Phone Number:")
