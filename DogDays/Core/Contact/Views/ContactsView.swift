@@ -47,16 +47,16 @@ struct ContactsView: View {
                     }
 
                 }
-                if selectedContact != nil {
                     ToolbarItem(placement: .destructiveAction) {
                         Button {
-                            showAlert = true
+                            if selectedContact != nil {
+                                showAlert = true
+                            }
                         } label: {
                             Text("Delete")
-                        }
-
+                        } .tint(selectedContact == nil ? .gray : Color.theme.accent)
                     }
-                }
+                
                 
                 ToolbarItem(placement:.navigationBarTrailing) {
                     Button {
@@ -70,7 +70,6 @@ struct ContactsView: View {
     }
 
         .alert(alertTitle, isPresented: $showAlert, actions: {
-            if let selectedContact = selectedContact {
                 HStack {
                     Button {
                         showAlert = false
@@ -78,12 +77,15 @@ struct ContactsView: View {
                         Text("Dismiss")
                     }
                     Button {
-                        vm.deleteContact(deletedEntity: selectedContact)
+                       if let selectedContact = selectedContact  {
+                            vm.deleteContact(deletedEntity: selectedContact)
+                        }
+                        selectedContact = nil
                     } label: {
                         Text("DELETE")
                     }
                 }
-            }
+            
         }
         )
         .sheet(isPresented: $showAddContactView) {
