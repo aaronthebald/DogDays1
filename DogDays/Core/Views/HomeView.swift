@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-
+    
     @EnvironmentObject private var vm: HomeViewModel
     @State var showAddSheet: Bool = false
     @State var showContactSheet: Bool = false
@@ -16,45 +16,65 @@ struct HomeView: View {
     @State var selectedEvent: EventEntity? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
-    @State var shadowAnimation: Bool = false
-    let columns: [GridItem] = [
-        GridItem(.flexible(), alignment: .top),
-        GridItem(.flexible(), alignment: .top)
-]
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
+        VStack(alignment: .leading) {
+            topIcons
+            Text("Upcoming Events")
+                .padding(.horizontal)
+                .font(.title)
+            if vm.events.isEmpty {
+                Spacer(minLength: 100)
+                welcomeBubble
+            } else {
+                List(content: {
+                    ForEach(vm.events) { event in
+                        EventCard(item: event, vm: vm)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button {
+                                    selectedEvent = event
+                                    showAlert = true
+                                } label: {
+                                    Image(systemName: "trash")
+                                        .tint(.red)
+                                }
+                                
+                                Button {
+                                    selectedEvent = event
+                                    showEditSheet = true
+                                } label: {
+                                    Label("Edit", systemImage: "square.and.pencil")
+                                }
+                            }
+                    }
+                })
+                .listStyle(.plain)
+                .listRowSeparator(.visible)
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 4)
+        .onAppear {
+            NotificationManager.instance.requestAuthorization()
+        }
         
-            ZStack {
-                ScrollView {
-                    topIcons
-                    VStack(alignment: .leading) {
-                       upccomingEventsHeader
-                        
-                        if vm.events.isEmpty {
-                            Spacer(minLength: 100)
-                            welcomeBubble
-                        }
-                        
-                        eventGrid
-                        
-                    }
-                    .sheet(isPresented: $showAddSheet) {
-                        AddEventView(vm: vm, showAddSheet: $showAddSheet)
-                            .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
-                    }
-                }
-            }
-            .onAppear {
-                NotificationManager.instance.requestAuthorization()
-            }
-        			
-            .alert("Are you sure?", isPresented: $showAlert, actions: {alertView})
-            .sheet(isPresented: $showContactSheet) {
-                ContactsView(showContactSheet: $showContactSheet)
-      }
+        .alert("Are you sure?", isPresented: $showAlert, actions: {alertView})
+        .sheet(isPresented: $showContactSheet) {
+            ContactsView(showContactSheet: $showContactSheet)
+        }
+        .sheet(isPresented: $showAddSheet, content: {
+            AddEventView(vm: vm, showAddSheet: $showAddSheet)
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
+        })
+        .sheet(isPresented: $showEditSheet, content: {
+            EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
+        })
     }
-  }
+}
 
 
 struct HomeView_Previews: PreviewProvider {
@@ -87,39 +107,12 @@ extension HomeView {
         .padding(.bottom)
 
     }
-
-    
-    private var eventGrid: some View {
-        LazyVGrid(
-            columns: columns,
-            alignment: .leading,
-            spacing: 20,
-            pinnedViews: []) {
-                ForEach(vm.events) { item in
-                    EventTileView(item: item, vm: vm, selectedEvent: $selectedEvent)
-                }
-                .padding(.horizontal, 8)
-                .padding(.top)
-            }
-    }
-    
-    private var upccomingEventsHeader: some View {
-        VStack {
-            Text("Upcoming Events.")
-                .font(.title)
-                .bold()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading)
-                editDeleteButtons
-                .padding(.horizontal)
-        }
-    }
     
     private var welcomeBubble: some View {
         HStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 25)
                 .fill(colorScheme == .light ? Color.white : Color.black)
-                .shadow(color: colorScheme == .light ? .black : .white, radius: shadowAnimation ? 14 : 10)
+                .shadow(color: colorScheme == .light ? .black : .white, radius: 10)
                 .overlay(
                 Text("Welcome to DogDays! Click the plus icon in the top right corner to add your first event and get started!")
                     .font(.headline)
@@ -128,11 +121,6 @@ extension HomeView {
                 .frame(width: 300, height: 175)
                 
                 
-        }
-        .onAppear {
-            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-                shadowAnimation = true
-            }
         }
         .frame(maxWidth: .infinity)
     }
@@ -158,32 +146,4 @@ extension HomeView {
         }
     }
     
-    private var editDeleteButtons: some View {
-        HStack {
-            Button {
-                if selectedEvent != nil {
-                    showEditSheet.toggle()
-                }
-            } label: {
-                Text("Edit")
-                }
-                
-            .buttonStyle(BorderedProminentButtonStyle())
-            .tint(selectedEvent != nil ? .theme.accent.opacity(0.75) : .gray)
-            .sheet(isPresented: $showEditSheet) {
-                EditEventView(vm: vm, selectedEvent: $selectedEvent, showEditSheet: $showEditSheet)
-                    .presentationDetents([.height(330)]).presentationDragIndicator(.visible)
-                }
-                Spacer()
-                Button {
-                        if selectedEvent != nil {
-                            showAlert.toggle()
-                        }
-                    } label: {
-                        Text("DELETE")
-                    }
-                    .buttonStyle(BorderedProminentButtonStyle())
-                    .tint(selectedEvent != nil ? .red.opacity(0.85) : .gray)
-                }
-    }
 }
