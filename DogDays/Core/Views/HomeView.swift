@@ -16,7 +16,7 @@ struct HomeView: View {
     @State var selectedEvent: EventEntity? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
-    
+
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
