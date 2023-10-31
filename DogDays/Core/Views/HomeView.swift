@@ -16,7 +16,6 @@ struct HomeView: View {
     @State var selectedEvent: EventEntity? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
-    @State var shadowAnimation: Bool = false
     let columns: [GridItem] = [
         GridItem(.flexible(), alignment: .top),
         GridItem(.flexible(), alignment: .top)
@@ -119,7 +118,7 @@ extension HomeView {
         HStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 25)
                 .fill(colorScheme == .light ? Color.white : Color.black)
-                .shadow(color: colorScheme == .light ? .black : .white, radius: shadowAnimation ? 14 : 10)
+                .shadow(color: colorScheme == .light ? .black : .white, radius: 10)
                 .overlay(
                 Text("Welcome to DogDays! Click the plus icon in the top right corner to add your first event and get started!")
                     .font(.headline)
@@ -128,11 +127,6 @@ extension HomeView {
                 .frame(width: 300, height: 175)
                 
                 
-        }
-        .onAppear {
-            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-                shadowAnimation = true
-            }
         }
         .frame(maxWidth: .infinity)
     }
