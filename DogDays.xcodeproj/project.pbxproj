@@ -29,6 +29,7 @@
 		02BA708029D9CA1F00394B40 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA707F29D9CA1F00394B40 /* HapticManager.swift */; };
 		02BA708329D9D4CC00394B40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02BA708229D9D4CC00394B40 /* LaunchScreen.storyboard */; };
 		02C5FB7529C0FD2600A0BB1E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5FB7429C0FD2600A0BB1E /* String.swift */; };
+		02F149412AEB2965005912AE /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F149402AEB2965005912AE /* EventCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		02BA707F29D9CA1F00394B40 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		02BA708229D9D4CC00394B40 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02C5FB7429C0FD2600A0BB1E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		02F149402AEB2965005912AE /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				0241B11429BBE3C100C7D2AB /* AddEventView.swift */,
 				02755B3429C8F656001F6593 /* EditEventView.swift */,
 				0225118529CA1713009B9AD9 /* EventTileView.swift */,
+				02F149402AEB2965005912AE /* EventCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				0241B10929B928D300C7D2AB /* Event.swift in Sources */,
 				0241B11229B93CF600C7D2AB /* HomeViewModel.swift in Sources */,
 				0241B11929BD2A2F00C7D2AB /* PreviewProvider.swift in Sources */,
+				02F149412AEB2965005912AE /* EventCard.swift in Sources */,
 				0241B0F829B9272200C7D2AB /* DogDaysApp.swift in Sources */,
 				0225118629CA1713009B9AD9 /* EventTileView.swift in Sources */,
 				0241B11F29C0B8C800C7D2AB /* ContactModel.swift in Sources */,
