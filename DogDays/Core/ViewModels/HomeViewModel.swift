@@ -96,23 +96,6 @@ class HomeViewModel: ObservableObject {
     
     // returns string for image based on event.type
     func getImage(event: EventEntity) -> String {
-        // if else statement to acheeve same thing as switch (truncated)
-        /*
-         if event.type == "Groomer" {
-        //            return "scissors"
-        //        } else if event.type == "Vet Visit" {
-        //            return "heart.text.square"
-        //        } else if event.type == "Medication" {
-        //            return "pills"
-        //        } else if event.type == "Task for Owner" {
-        //            return "checklist"
-        //        } else if event.type == "PlayDate" {
-        //            return "pawprint"
-        //        }
-        //        else {
-        //            return  ""
-        //        }
-         */
         switch event.type {
         case "Groomer":
             return "scissors"
