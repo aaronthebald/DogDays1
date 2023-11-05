@@ -19,8 +19,8 @@ struct EventCard: View {
                 Text(item.location ?? "Event has no Location")
                     .font(.subheadline)
                 HStack {
-                    Text("Days until: ")
-                    Text(timePeriodTest(date: item.date!).description)
+                    Text(vm.isShowingFutureEvents ? "Days Until: " : "Days Since: ")
+                    Text(timePeriodTest(date: item.date ?? Date()).description)
                 }
                 Text(item.date?.formatted(date: .abbreviated, time: .shortened) ?? "Event has no date")
 

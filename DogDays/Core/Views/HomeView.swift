@@ -16,21 +16,34 @@ struct HomeView: View {
     @State var selectedEvent: EventEntity? = nil
     @State private var showAlert: Bool = false
     @State var alertTitle: String = ""
-
+    var timeChoices: [String] = ["Future Events", "Past Events"]
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         VStack(alignment: .leading) {
             topIcons
-            Text("Upcoming Events")
+            Text(vm.isShowingFutureEvents ? "Upcoming events" : "Past Events")
                 .padding(.horizontal)
                 .font(.title)
             if vm.events.isEmpty {
                 Spacer(minLength: 100)
                 welcomeBubble
             } else {
+                Picker(selection: $vm.timeFrame) {
+                    ForEach(timeChoices, id: \.self) { time in
+                            Text(time)
+                    }
+                } label: {
+                    
+                }
+                .pickerStyle(.segmented)
+                if vm.sortedEvents.isEmpty {
+                        Text(vm.isShowingFutureEvents ? "No Future Events Scheduled" : "No Past Events Saved")
+                            .padding(.horizontal)
+                            .padding(.vertical)
+                }
                 List(content: {
-                    ForEach(vm.events) { event in
+                    ForEach(vm.sortedEvents) { event in
                         EventCard(item: event, vm: vm)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button {
@@ -55,6 +68,9 @@ struct HomeView: View {
             }
             Spacer()
         }
+        .onChange(of: vm.timeFrame, perform: { newValue in
+            vm.applyChanges()
+        })
         .padding(.horizontal, 4)
         .onAppear {
             NotificationManager.instance.requestAuthorization()

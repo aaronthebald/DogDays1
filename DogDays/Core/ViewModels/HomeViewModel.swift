@@ -15,11 +15,13 @@ class HomeViewModel: ObservableObject {
     @Published var events: [EventEntity] = []
     @Published var imageName: String = ""
     @Published var sortedEvents: [EventEntity] = []
-    
+    @Published var timeFrame: String = "Future Events"
+    @Published var isShowingFutureEvents: Bool = true
     
     private let container: NSPersistentContainer
     private let containerName: String = "EventContainer"
     private let entityName: String = "EventEntity"
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         container = NSPersistentContainer(name: containerName)
@@ -30,11 +32,23 @@ class HomeViewModel: ObservableObject {
                 self.getEvents()
             }
         sortEvents()
+        subsribeToFutureStatus()
         print("HomeVM ran")
     }
     
 
     
+    func subsribeToFutureStatus() {
+        $timeFrame
+            .sink { [weak self] time in
+                if time == "Future Events" {
+                    self?.isShowingFutureEvents = true
+                } else {
+                    self?.isShowingFutureEvents = false
+                }
+            }
+            .store(in: &cancellables)
+    }
     
     private func getEvents() {
         let request = NSFetchRequest<EventEntity>(entityName: entityName)
@@ -90,6 +104,7 @@ class HomeViewModel: ObservableObject {
      func applyChanges() {
         save()
         getEvents()
+        sortEvents()
     }
 
     
@@ -113,8 +128,19 @@ class HomeViewModel: ObservableObject {
     }
     
     func sortEvents() {
-            events = events.sorted(by: {$0.date?.timeIntervalSinceNow ?? .zero < $1.date?.timeIntervalSinceNow ?? .zero})
-            
+        sortedEvents.removeAll()
+        if timeFrame == "Future Events" {
+            for event in events {
+                if event.date! > Date() {
+                    sortedEvents.append(event)
+                }
+            }
+        } else {
+            for event in events {
+                if event.date! < Date() {
+                    sortedEvents.append(event)
+                }
+            }
+        }
     }
-    
 }
